@@ -1,6 +1,6 @@
 #Introduction
 
-The files in gr-tagutils are useful for experimenting with Message Passing in 
+The files in gr-messageutils are useful for experimenting with Message Passing in 
 GNU Radio (ver 3.7 or later).
 
 
