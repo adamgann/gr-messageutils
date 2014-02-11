@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<block>
+  <name>PDU Debug</name>
+  <key>messageutils_pdu_debug</key>
+  <category>messageutils</category>
+  <import>import messageutils</import>
+  <make>messageutils.pdu_debug($meta_only)</make>
+
+    <param>
+        <name>Metadata Only</name>
+        <key>meta_only</key>
+        <value>True</value>
+        <type>bool</type>
+		    <option>
+			    <name>True</name>
+			    <key>True</key>
+		    </option>
+		    <option>
+			    <name>False</name>
+			    <key>False</key>
+		    </option>
+    </param>
+
+	<sink>
+		<name>pdus</name>
+		<type>message</type>
+        <optional>1</optional>
+	</sink>
+    
+</block>

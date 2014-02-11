@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+  <compounddef id="dir_3247503a04112147db7f14a6859458b3" kind="dir">
+    <compoundname>/home/adam/src/gr-messageutils/include/messageutils/</compoundname>
+    <innerfile refid="api_8h">api.h</innerfile>
+    <innerfile refid="pdu__debug_8h">pdu_debug.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/adam/src/gr-messageutils/include/messageutils/"/>
+  </compounddef>
+</doxygen>
