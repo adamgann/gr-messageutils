@@ -10,6 +10,12 @@
 gnuradio/attributes.h
 -
 
+../include/messageutils/message_thresh_switch.h
+messageutils/api.h
+-
+gnuradio/sync_block.h
+-
+
 ../include/messageutils/pdu_debug.h
 messageutils/api.h
 -
@@ -55,6 +61,8 @@ limits.h
 -
 messageutils/pdu_debug.h
 /home/adam/src/gr-messageutils/build/swig/messageutils/pdu_debug.h
+messageutils/message_thresh_switch.h
+/home/adam/src/gr-messageutils/build/swig/messageutils/message_thresh_switch.h
 float.h
 -
 math.h

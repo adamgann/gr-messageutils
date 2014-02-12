@@ -8,42 +8,42 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="634">
-        <label>std::wostream</label>
-        <childnode refid="635" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="635">
-        <label>std::basic_ostream&lt; wchar_t &gt;</label>
-        <childnode refid="636" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="636">
-        <label>std::basic_ios&lt; Char &gt;</label>
+        <label>std::wostream</label>
         <childnode refid="637" relation="public-inheritance">
         </childnode>
       </node>
       <node id="637">
-        <label>std::ios_base</label>
+        <label>std::basic_ostream&lt; wchar_t &gt;</label>
+        <childnode refid="638" relation="public-inheritance">
+        </childnode>
       </node>
-    </inheritancegraph>
-    <collaborationgraph>
       <node id="638">
-        <label>std::wostream</label>
+        <label>std::basic_ios&lt; Char &gt;</label>
         <childnode refid="639" relation="public-inheritance">
         </childnode>
       </node>
       <node id="639">
-        <label>std::basic_ostream&lt; wchar_t &gt;</label>
-        <childnode refid="640" relation="public-inheritance">
-        </childnode>
+        <label>std::ios_base</label>
       </node>
+    </inheritancegraph>
+    <collaborationgraph>
       <node id="640">
-        <label>std::basic_ios&lt; Char &gt;</label>
+        <label>std::wostream</label>
         <childnode refid="641" relation="public-inheritance">
         </childnode>
       </node>
       <node id="641">
+        <label>std::basic_ostream&lt; wchar_t &gt;</label>
+        <childnode refid="642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="642">
+        <label>std::basic_ios&lt; Char &gt;</label>
+        <childnode refid="643" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="643">
         <label>std::ios_base</label>
       </node>
     </collaborationgraph>

@@ -1,6 +1,7 @@
 /usr/local/lib/cmake/messageutils/messageutilsConfig.cmake
 /usr/local/include/messageutils/api.h
 /usr/local/include/messageutils/pdu_debug.h
+/usr/local/include/messageutils/message_thresh_switch.h
 /usr/local/lib/libgnuradio-messageutils.so
 /usr/local/lib/python2.7/dist-packages/messageutils/_messageutils_swig.so
 /usr/local/lib/python2.7/dist-packages/messageutils/messageutils_swig.py
@@ -12,3 +13,4 @@
 /usr/local/lib/python2.7/dist-packages/messageutils/__init__.pyc
 /usr/local/lib/python2.7/dist-packages/messageutils/__init__.pyo
 /usr/local/share/gnuradio/grc/blocks/messageutils_pdu_debug.xml
+/usr/local/share/gnuradio/grc/blocks/messageutils_message_thresh_switch.xml

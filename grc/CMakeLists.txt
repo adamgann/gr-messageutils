@@ -17,5 +17,6 @@
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
 install(FILES
-    messageutils_pdu_debug.xml DESTINATION share/gnuradio/grc/blocks
+    messageutils_pdu_debug.xml
+    messageutils_message_thresh_switch.xml DESTINATION share/gnuradio/grc/blocks
 )

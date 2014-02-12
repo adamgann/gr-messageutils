@@ -8,32 +8,32 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="479">
+      <node id="481">
         <label>std::logic_error</label>
-        <childnode refid="480" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="478">
-        <label>std::out_of_range</label>
-        <childnode refid="479" relation="public-inheritance">
+        <childnode refid="482" relation="public-inheritance">
         </childnode>
       </node>
       <node id="480">
+        <label>std::out_of_range</label>
+        <childnode refid="481" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="482">
         <label>std::exception</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="482">
+      <node id="484">
         <label>std::logic_error</label>
-        <childnode refid="483" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="481">
-        <label>std::out_of_range</label>
-        <childnode refid="482" relation="public-inheritance">
+        <childnode refid="485" relation="public-inheritance">
         </childnode>
       </node>
       <node id="483">
+        <label>std::out_of_range</label>
+        <childnode refid="484" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="485">
         <label>std::exception</label>
       </node>
     </collaborationgraph>

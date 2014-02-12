@@ -5,24 +5,24 @@
     <includes refid="api_8h" local="no">messageutils/api.h</includes>
     <includes local="no">gnuradio/block.h</includes>
     <incdepgraph>
-      <node id="5">
+      <node id="11">
         <label>messageutils/api.h</label>
         <link refid="api_8h"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="12">
         <label>gnuradio/attributes.h</label>
       </node>
-      <node id="4">
+      <node id="10">
         <label>/home/adam/src/gr-messageutils/include/messageutils/pdu_debug.h</label>
         <link refid="pdu_debug.h"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="13">
         <label>gnuradio/block.h</label>
       </node>
     </incdepgraph>
@@ -61,15 +61,15 @@
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="api_8h" kindref="compound">messageutils/api.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gnuradio/block.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28" refid="namespacegr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gr<sp/>{</highlight></codeline>
-<codeline lineno="29" refid="namespacegr_1_1messageutils" refkind="compound"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">messageutils<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gr<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">messageutils<sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47" refid="classgr_1_1messageutils_1_1pdu__debug" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="api_8h_1ab12aff9f7914facbea8cc9ce1b1672d8" kindref="member">MESSAGEUTILS_API</ref><sp/><ref refid="classgr_1_1messageutils_1_1pdu__debug" kindref="compound" tooltip="Debug block with added functions for PDUs.">pdu_debug</ref><sp/>:<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>gr::block</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="50" refid="classgr_1_1messageutils_1_1pdu__debug_1aca2c7943a6885cebcd96205bd141af6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>boost::shared_ptr&lt;pdu_debug&gt;<sp/><ref refid="classgr_1_1messageutils_1_1pdu__debug_1aca2c7943a6885cebcd96205bd141af6f" kindref="member">sptr</ref>;</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classgr_1_1messageutils_1_1pdu__debug_1aca2c7943a6885cebcd96205bd141af6f" kindref="member">sptr</ref><sp/>make(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>meta_only);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classgr_1_1messageutils_1_1pdu__debug_1aca2c7943a6885cebcd96205bd141af6f" kindref="member">sptr</ref><sp/>make(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>meta_only,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>display);</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>messageutils</highlight><highlight class="normal"></highlight></codeline>

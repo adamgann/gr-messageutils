@@ -9,7 +9,10 @@
 
 %{
 #include "messageutils/pdu_debug.h"
+#include "messageutils/message_thresh_switch.h"
 %}
 
 %include "messageutils/pdu_debug.h"
 GR_SWIG_BLOCK_MAGIC2(messageutils, pdu_debug);
+%include "messageutils/message_thresh_switch.h"
+GR_SWIG_BLOCK_MAGIC2(messageutils, message_thresh_switch);

@@ -49,7 +49,7 @@ namespace gr {
      public:
       typedef boost::shared_ptr<pdu_debug> sptr;
 
-      static sptr make(bool meta_only);
+      static sptr make(bool meta_only, bool display);
     };
 
   } // namespace messageutils

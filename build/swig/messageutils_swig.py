@@ -104,9 +104,9 @@ class pdu_debug(object):
     __repr__ = _swig_repr
     def make(*args, **kwargs):
         """
-        make(bool meta_only) -> sptr
+        make(bool meta_only, bool display) -> sptr
 
-        Params: (meta_only)
+        Params: (meta_only, display)
         """
         return _messageutils_swig.pdu_debug_make(*args, **kwargs)
 
@@ -118,9 +118,9 @@ pdu_debug_swigregister(pdu_debug)
 
 def pdu_debug_make(*args, **kwargs):
   """
-    pdu_debug_make(bool meta_only) -> sptr
+    pdu_debug_make(bool meta_only, bool display) -> sptr
 
-    Params: (meta_only)
+    Params: (meta_only, display)
     """
   return _messageutils_swig.pdu_debug_make(*args, **kwargs)
 
@@ -144,9 +144,9 @@ class pdu_debug_sptr(object):
     __del__ = lambda self : None;
     def make(self, *args, **kwargs):
         """
-        make(self, bool meta_only) -> sptr
+        make(self, bool meta_only, bool display) -> sptr
 
-        Params: (meta_only)
+        Params: (meta_only, display)
         """
         return _messageutils_swig.pdu_debug_sptr_make(self, *args, **kwargs)
 
@@ -390,6 +390,312 @@ pdu_debug_sptr_swigregister(pdu_debug_sptr)
 
 pdu_debug_sptr.__repr__ = lambda self: "<gr_block %s (%d)>" % (self.name(), self.unique_id())
 pdu_debug = pdu_debug.make;
+
+class message_thresh_switch(object):
+    """<+description of block+>"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    def make(*args, **kwargs):
+        """
+        make(size_t itemsize, string key, double thresh, bool debug) -> sptr
+
+        Return a shared_ptr to a new instance of messageutils::message_thresh_switch.
+
+        To avoid accidental use of raw pointers, messageutils::message_thresh_switch's constructor is in a private implementation class. messageutils::message_thresh_switch::make is the public interface for creating new instances.
+
+        Params: (itemsize, key, thresh, debug)
+        """
+        return _messageutils_swig.message_thresh_switch_make(*args, **kwargs)
+
+    make = staticmethod(make)
+    __swig_destroy__ = _messageutils_swig.delete_message_thresh_switch
+    __del__ = lambda self : None;
+message_thresh_switch_swigregister = _messageutils_swig.message_thresh_switch_swigregister
+message_thresh_switch_swigregister(message_thresh_switch)
+
+def message_thresh_switch_make(*args, **kwargs):
+  """
+    message_thresh_switch_make(size_t itemsize, string key, double thresh, bool debug) -> sptr
+
+    Return a shared_ptr to a new instance of messageutils::message_thresh_switch.
+
+    To avoid accidental use of raw pointers, messageutils::message_thresh_switch's constructor is in a private implementation class. messageutils::message_thresh_switch::make is the public interface for creating new instances.
+
+    Params: (itemsize, key, thresh, debug)
+    """
+  return _messageutils_swig.message_thresh_switch_make(*args, **kwargs)
+
+class message_thresh_switch_sptr(object):
+    """Proxy of C++ boost::shared_ptr<(gr::messageutils::message_thresh_switch)> class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """
+        __init__(self) -> message_thresh_switch_sptr
+        __init__(self, message_thresh_switch p) -> message_thresh_switch_sptr
+        """
+        this = _messageutils_swig.new_message_thresh_switch_sptr(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def __deref__(self):
+        """__deref__(self) -> message_thresh_switch"""
+        return _messageutils_swig.message_thresh_switch_sptr___deref__(self)
+
+    __swig_destroy__ = _messageutils_swig.delete_message_thresh_switch_sptr
+    __del__ = lambda self : None;
+    def make(self, *args, **kwargs):
+        """
+        make(self, size_t itemsize, string key, double thresh, bool debug) -> sptr
+
+        Return a shared_ptr to a new instance of messageutils::message_thresh_switch.
+
+        To avoid accidental use of raw pointers, messageutils::message_thresh_switch's constructor is in a private implementation class. messageutils::message_thresh_switch::make is the public interface for creating new instances.
+
+        Params: (itemsize, key, thresh, debug)
+        """
+        return _messageutils_swig.message_thresh_switch_sptr_make(self, *args, **kwargs)
+
+    def history(self):
+        """history(self) -> unsigned int"""
+        return _messageutils_swig.message_thresh_switch_sptr_history(self)
+
+    def declare_sample_delay(self, *args):
+        """
+        declare_sample_delay(self, int which, int delay)
+        declare_sample_delay(self, unsigned int delay)
+        """
+        return _messageutils_swig.message_thresh_switch_sptr_declare_sample_delay(self, *args)
+
+    def sample_delay(self, *args, **kwargs):
+        """sample_delay(self, int which) -> unsigned int"""
+        return _messageutils_swig.message_thresh_switch_sptr_sample_delay(self, *args, **kwargs)
+
+    def output_multiple(self):
+        """output_multiple(self) -> int"""
+        return _messageutils_swig.message_thresh_switch_sptr_output_multiple(self)
+
+    def relative_rate(self):
+        """relative_rate(self) -> double"""
+        return _messageutils_swig.message_thresh_switch_sptr_relative_rate(self)
+
+    def start(self):
+        """start(self) -> bool"""
+        return _messageutils_swig.message_thresh_switch_sptr_start(self)
+
+    def stop(self):
+        """stop(self) -> bool"""
+        return _messageutils_swig.message_thresh_switch_sptr_stop(self)
+
+    def nitems_read(self, *args, **kwargs):
+        """nitems_read(self, unsigned int which_input) -> uint64_t"""
+        return _messageutils_swig.message_thresh_switch_sptr_nitems_read(self, *args, **kwargs)
+
+    def nitems_written(self, *args, **kwargs):
+        """nitems_written(self, unsigned int which_output) -> uint64_t"""
+        return _messageutils_swig.message_thresh_switch_sptr_nitems_written(self, *args, **kwargs)
+
+    def max_noutput_items(self):
+        """max_noutput_items(self) -> int"""
+        return _messageutils_swig.message_thresh_switch_sptr_max_noutput_items(self)
+
+    def set_max_noutput_items(self, *args, **kwargs):
+        """set_max_noutput_items(self, int m)"""
+        return _messageutils_swig.message_thresh_switch_sptr_set_max_noutput_items(self, *args, **kwargs)
+
+    def unset_max_noutput_items(self):
+        """unset_max_noutput_items(self)"""
+        return _messageutils_swig.message_thresh_switch_sptr_unset_max_noutput_items(self)
+
+    def is_set_max_noutput_items(self):
+        """is_set_max_noutput_items(self) -> bool"""
+        return _messageutils_swig.message_thresh_switch_sptr_is_set_max_noutput_items(self)
+
+    def max_output_buffer(self, *args, **kwargs):
+        """max_output_buffer(self, int i) -> long"""
+        return _messageutils_swig.message_thresh_switch_sptr_max_output_buffer(self, *args, **kwargs)
+
+    def set_max_output_buffer(self, *args):
+        """
+        set_max_output_buffer(self, long max_output_buffer)
+        set_max_output_buffer(self, int port, long max_output_buffer)
+        """
+        return _messageutils_swig.message_thresh_switch_sptr_set_max_output_buffer(self, *args)
+
+    def min_output_buffer(self, *args, **kwargs):
+        """min_output_buffer(self, int i) -> long"""
+        return _messageutils_swig.message_thresh_switch_sptr_min_output_buffer(self, *args, **kwargs)
+
+    def set_min_output_buffer(self, *args):
+        """
+        set_min_output_buffer(self, long min_output_buffer)
+        set_min_output_buffer(self, int port, long min_output_buffer)
+        """
+        return _messageutils_swig.message_thresh_switch_sptr_set_min_output_buffer(self, *args)
+
+    def pc_noutput_items(self):
+        """pc_noutput_items(self) -> float"""
+        return _messageutils_swig.message_thresh_switch_sptr_pc_noutput_items(self)
+
+    def pc_noutput_items_avg(self):
+        """pc_noutput_items_avg(self) -> float"""
+        return _messageutils_swig.message_thresh_switch_sptr_pc_noutput_items_avg(self)
+
+    def pc_noutput_items_var(self):
+        """pc_noutput_items_var(self) -> float"""
+        return _messageutils_swig.message_thresh_switch_sptr_pc_noutput_items_var(self)
+
+    def pc_nproduced(self):
+        """pc_nproduced(self) -> float"""
+        return _messageutils_swig.message_thresh_switch_sptr_pc_nproduced(self)
+
+    def pc_nproduced_avg(self):
+        """pc_nproduced_avg(self) -> float"""
+        return _messageutils_swig.message_thresh_switch_sptr_pc_nproduced_avg(self)
+
+    def pc_nproduced_var(self):
+        """pc_nproduced_var(self) -> float"""
+        return _messageutils_swig.message_thresh_switch_sptr_pc_nproduced_var(self)
+
+    def pc_input_buffers_full(self, *args):
+        """
+        pc_input_buffers_full(self, int which) -> float
+        pc_input_buffers_full(self) -> pmt_vector_float
+        """
+        return _messageutils_swig.message_thresh_switch_sptr_pc_input_buffers_full(self, *args)
+
+    def pc_input_buffers_full_avg(self, *args):
+        """
+        pc_input_buffers_full_avg(self, int which) -> float
+        pc_input_buffers_full_avg(self) -> pmt_vector_float
+        """
+        return _messageutils_swig.message_thresh_switch_sptr_pc_input_buffers_full_avg(self, *args)
+
+    def pc_input_buffers_full_var(self, *args):
+        """
+        pc_input_buffers_full_var(self, int which) -> float
+        pc_input_buffers_full_var(self) -> pmt_vector_float
+        """
+        return _messageutils_swig.message_thresh_switch_sptr_pc_input_buffers_full_var(self, *args)
+
+    def pc_output_buffers_full(self, *args):
+        """
+        pc_output_buffers_full(self, int which) -> float
+        pc_output_buffers_full(self) -> pmt_vector_float
+        """
+        return _messageutils_swig.message_thresh_switch_sptr_pc_output_buffers_full(self, *args)
+
+    def pc_output_buffers_full_avg(self, *args):
+        """
+        pc_output_buffers_full_avg(self, int which) -> float
+        pc_output_buffers_full_avg(self) -> pmt_vector_float
+        """
+        return _messageutils_swig.message_thresh_switch_sptr_pc_output_buffers_full_avg(self, *args)
+
+    def pc_output_buffers_full_var(self, *args):
+        """
+        pc_output_buffers_full_var(self, int which) -> float
+        pc_output_buffers_full_var(self) -> pmt_vector_float
+        """
+        return _messageutils_swig.message_thresh_switch_sptr_pc_output_buffers_full_var(self, *args)
+
+    def pc_work_time(self):
+        """pc_work_time(self) -> float"""
+        return _messageutils_swig.message_thresh_switch_sptr_pc_work_time(self)
+
+    def pc_work_time_avg(self):
+        """pc_work_time_avg(self) -> float"""
+        return _messageutils_swig.message_thresh_switch_sptr_pc_work_time_avg(self)
+
+    def pc_work_time_var(self):
+        """pc_work_time_var(self) -> float"""
+        return _messageutils_swig.message_thresh_switch_sptr_pc_work_time_var(self)
+
+    def pc_work_time_total(self):
+        """pc_work_time_total(self) -> float"""
+        return _messageutils_swig.message_thresh_switch_sptr_pc_work_time_total(self)
+
+    def set_processor_affinity(self, *args, **kwargs):
+        """set_processor_affinity(self, __dummy_5__ mask)"""
+        return _messageutils_swig.message_thresh_switch_sptr_set_processor_affinity(self, *args, **kwargs)
+
+    def unset_processor_affinity(self):
+        """unset_processor_affinity(self)"""
+        return _messageutils_swig.message_thresh_switch_sptr_unset_processor_affinity(self)
+
+    def processor_affinity(self):
+        """processor_affinity(self) -> __dummy_5__"""
+        return _messageutils_swig.message_thresh_switch_sptr_processor_affinity(self)
+
+    def active_thread_priority(self):
+        """active_thread_priority(self) -> int"""
+        return _messageutils_swig.message_thresh_switch_sptr_active_thread_priority(self)
+
+    def thread_priority(self):
+        """thread_priority(self) -> int"""
+        return _messageutils_swig.message_thresh_switch_sptr_thread_priority(self)
+
+    def set_thread_priority(self, *args, **kwargs):
+        """set_thread_priority(self, int priority) -> int"""
+        return _messageutils_swig.message_thresh_switch_sptr_set_thread_priority(self, *args, **kwargs)
+
+    def name(self):
+        """name(self) -> string"""
+        return _messageutils_swig.message_thresh_switch_sptr_name(self)
+
+    def symbol_name(self):
+        """symbol_name(self) -> string"""
+        return _messageutils_swig.message_thresh_switch_sptr_symbol_name(self)
+
+    def input_signature(self):
+        """input_signature(self) -> sptr"""
+        return _messageutils_swig.message_thresh_switch_sptr_input_signature(self)
+
+    def output_signature(self):
+        """output_signature(self) -> sptr"""
+        return _messageutils_swig.message_thresh_switch_sptr_output_signature(self)
+
+    def unique_id(self):
+        """unique_id(self) -> long"""
+        return _messageutils_swig.message_thresh_switch_sptr_unique_id(self)
+
+    def to_basic_block(self):
+        """to_basic_block(self) -> basic_block_sptr"""
+        return _messageutils_swig.message_thresh_switch_sptr_to_basic_block(self)
+
+    def check_topology(self, *args, **kwargs):
+        """check_topology(self, int ninputs, int noutputs) -> bool"""
+        return _messageutils_swig.message_thresh_switch_sptr_check_topology(self, *args, **kwargs)
+
+    def alias(self):
+        """alias(self) -> string"""
+        return _messageutils_swig.message_thresh_switch_sptr_alias(self)
+
+    def set_block_alias(self, *args, **kwargs):
+        """set_block_alias(self, string name)"""
+        return _messageutils_swig.message_thresh_switch_sptr_set_block_alias(self, *args, **kwargs)
+
+    def _post(self, *args, **kwargs):
+        """_post(self, pmt_t which_port, pmt_t msg)"""
+        return _messageutils_swig.message_thresh_switch_sptr__post(self, *args, **kwargs)
+
+    def message_ports_in(self):
+        """message_ports_in(self) -> pmt_t"""
+        return _messageutils_swig.message_thresh_switch_sptr_message_ports_in(self)
+
+    def message_ports_out(self):
+        """message_ports_out(self) -> pmt_t"""
+        return _messageutils_swig.message_thresh_switch_sptr_message_ports_out(self)
+
+    def message_subscribers(self, *args, **kwargs):
+        """message_subscribers(self, pmt_t which_port) -> pmt_t"""
+        return _messageutils_swig.message_thresh_switch_sptr_message_subscribers(self, *args, **kwargs)
+
+message_thresh_switch_sptr_swigregister = _messageutils_swig.message_thresh_switch_sptr_swigregister
+message_thresh_switch_sptr_swigregister(message_thresh_switch_sptr)
+
+message_thresh_switch_sptr.__repr__ = lambda self: "<gr_block %s (%d)>" % (self.name(), self.unique_id())
+message_thresh_switch = message_thresh_switch.make;
 
 
 

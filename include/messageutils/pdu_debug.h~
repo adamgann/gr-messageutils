@@ -49,14 +49,6 @@ namespace gr {
      public:
       typedef boost::shared_ptr<pdu_debug> sptr;
 
-      /*!
-       * \brief Return a shared_ptr to a new instance of messageutils::pdu_debug.
-       *
-       * To avoid accidental use of raw pointers, messageutils::pdu_debug's
-       * constructor is in a private implementation
-       * class. messageutils::pdu_debug::make is the public interface for
-       * creating new instances.
-       */
       static sptr make(bool meta_only);
     };
 

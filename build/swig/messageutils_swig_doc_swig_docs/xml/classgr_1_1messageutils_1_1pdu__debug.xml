@@ -19,14 +19,18 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classgr_1_1messageutils_1_1pdu__debug_1a5b0f5251cbc869c810a86d11e6e009e4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classgr_1_1messageutils_1_1pdu__debug_1a3b81322729678372bbc10db227f055dd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classgr_1_1messageutils_1_1pdu__debug_1aca2c7943a6885cebcd96205bd141af6f" kindref="member">sptr</ref></type>
         <definition>static sptr gr::messageutils::pdu_debug::make</definition>
-        <argsstring>(bool meta_only)</argsstring>
+        <argsstring>(bool meta_only, bool display)</argsstring>
         <name>make</name>
         <param>
           <type>bool</type>
           <declname>meta_only</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>display</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -48,7 +52,7 @@
 </para>    </detaileddescription>
     <location file="/home/adam/src/gr-messageutils/include/messageutils/pdu_debug.h" line="48" bodyfile="/home/adam/src/gr-messageutils/include/messageutils/pdu_debug.h" bodystart="47" bodyend="53"/>
     <listofallmembers>
-      <member refid="classgr_1_1messageutils_1_1pdu__debug_1a5b0f5251cbc869c810a86d11e6e009e4" prot="public" virt="non-virtual"><scope>gr::messageutils::pdu_debug</scope><name>make</name></member>
+      <member refid="classgr_1_1messageutils_1_1pdu__debug_1a3b81322729678372bbc10db227f055dd" prot="public" virt="non-virtual"><scope>gr::messageutils::pdu_debug</scope><name>make</name></member>
       <member refid="classgr_1_1messageutils_1_1pdu__debug_1aca2c7943a6885cebcd96205bd141af6f" prot="public" virt="non-virtual"><scope>gr::messageutils::pdu_debug</scope><name>sptr</name></member>
     </listofallmembers>
   </compounddef>

@@ -2,9 +2,9 @@
 <block>
   <name>PDU Debug</name>
   <key>messageutils_pdu_debug</key>
-  <category>messageutils</category>
+  <category>Debug Tools</category>
   <import>import messageutils</import>
-  <make>messageutils.pdu_debug($meta_only)</make>
+  <make>messageutils.pdu_debug($meta_only, $display)</make>
 
     <param>
         <name>Metadata Only</name>
@@ -17,6 +17,21 @@
 		    </option>
 		    <option>
 			    <name>False</name>
+			    <key>False</key>
+		    </option>
+    </param>
+
+    <param>
+        <name>Display</name>
+        <key>display</key>
+        <value>True</value>
+        <type>bool</type>
+		    <option>
+			    <name>On</name>
+			    <key>True</key>
+		    </option>
+		    <option>
+			    <name>Off</name>
 			    <key>False</key>
 		    </option>
     </param>

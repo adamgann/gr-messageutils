@@ -174,6 +174,30 @@ test-messageutils/fast:
 	cd /home/adam/src/gr-messageutils/build && $(MAKE) -f lib/CMakeFiles/test-messageutils.dir/build.make lib/CMakeFiles/test-messageutils.dir/build
 .PHONY : test-messageutils/fast
 
+message_thresh_switch_impl.o: message_thresh_switch_impl.cc.o
+.PHONY : message_thresh_switch_impl.o
+
+# target to build an object file
+message_thresh_switch_impl.cc.o:
+	cd /home/adam/src/gr-messageutils/build && $(MAKE) -f lib/CMakeFiles/gnuradio-messageutils.dir/build.make lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o
+.PHONY : message_thresh_switch_impl.cc.o
+
+message_thresh_switch_impl.i: message_thresh_switch_impl.cc.i
+.PHONY : message_thresh_switch_impl.i
+
+# target to preprocess a source file
+message_thresh_switch_impl.cc.i:
+	cd /home/adam/src/gr-messageutils/build && $(MAKE) -f lib/CMakeFiles/gnuradio-messageutils.dir/build.make lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.i
+.PHONY : message_thresh_switch_impl.cc.i
+
+message_thresh_switch_impl.s: message_thresh_switch_impl.cc.s
+.PHONY : message_thresh_switch_impl.s
+
+# target to generate assembly for a file
+message_thresh_switch_impl.cc.s:
+	cd /home/adam/src/gr-messageutils/build && $(MAKE) -f lib/CMakeFiles/gnuradio-messageutils.dir/build.make lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.s
+.PHONY : message_thresh_switch_impl.cc.s
+
 pdu_debug_impl.o: pdu_debug_impl.cc.o
 .PHONY : pdu_debug_impl.o
 
@@ -261,6 +285,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... test-messageutils"
+	@echo "... message_thresh_switch_impl.o"
+	@echo "... message_thresh_switch_impl.i"
+	@echo "... message_thresh_switch_impl.s"
 	@echo "... pdu_debug_impl.o"
 	@echo "... pdu_debug_impl.i"
 	@echo "... pdu_debug_impl.s"

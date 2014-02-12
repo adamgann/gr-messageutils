@@ -55,6 +55,7 @@ swig/messageutils_swig.pyo: swig/messageutils_swig.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating messageutils_swig.pyo"
 	cd /home/adam/src/gr-messageutils/build/swig && /usr/bin/python -O /home/adam/src/gr-messageutils/build/python_compile_helper.py /home/adam/src/gr-messageutils/build/swig/messageutils_swig.py /home/adam/src/gr-messageutils/build/swig/messageutils_swig.pyo
 
+swig/messageutils_swigPYTHON_wrap.cxx: swig/messageutils_swig_doc.i
 swig/messageutils_swigPYTHON_wrap.cxx: /usr/local/include/gnuradio/swig/gnuradio.i
 swig/messageutils_swigPYTHON_wrap.cxx: /usr/local/include/gnuradio/swig/gr_extras.i
 swig/messageutils_swigPYTHON_wrap.cxx: ../swig/messageutils_swig.i
@@ -70,17 +71,17 @@ swig/messageutils_swigPYTHON_wrap.cxx: ../swig/messageutils_swig.i
 
 swig/messageutils_swig.py: swig/messageutils_swigPYTHON_wrap.cxx
 
+swig/messageutils_swig_doc.i: swig/messageutils_swig_doc_swig_docs/xml/index.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/adam/src/gr-messageutils/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating messageutils_swig_doc.i"
+	cd /home/adam/src/gr-messageutils/docs/doxygen && /usr/bin/python -B /home/adam/src/gr-messageutils/docs/doxygen/swig_doc.py /home/adam/src/gr-messageutils/build/swig/messageutils_swig_doc_swig_docs/xml /home/adam/src/gr-messageutils/build/swig/messageutils_swig_doc.i
+
 swig/messageutils_swig.tag: swig/messageutils_swig_doc.i
 swig/messageutils_swig.tag: swig/_messageutils_swig_swig_tag
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/adam/src/gr-messageutils/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/adam/src/gr-messageutils/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating messageutils_swig.tag"
 	cd /home/adam/src/gr-messageutils/build/swig && ./_messageutils_swig_swig_tag
 	cd /home/adam/src/gr-messageutils/build/swig && /usr/bin/cmake -E touch /home/adam/src/gr-messageutils/build/swig/messageutils_swig.tag
-
-swig/messageutils_swig_doc.i: swig/messageutils_swig_doc_swig_docs/xml/index.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/adam/src/gr-messageutils/build/CMakeFiles $(CMAKE_PROGRESS_5)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating messageutils_swig_doc.i"
-	cd /home/adam/src/gr-messageutils/docs/doxygen && /usr/bin/python -B /home/adam/src/gr-messageutils/docs/doxygen/swig_doc.py /home/adam/src/gr-messageutils/build/swig/messageutils_swig_doc_swig_docs/xml /home/adam/src/gr-messageutils/build/swig/messageutils_swig_doc.i
 
 swig/messageutils_swig_doc_swig_docs/xml/index.xml: swig/_messageutils_swig_doc_tag
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/adam/src/gr-messageutils/build/CMakeFiles $(CMAKE_PROGRESS_6)
@@ -93,8 +94,8 @@ pygen_swig_93917: swig/messageutils_swig.pyc
 pygen_swig_93917: swig/messageutils_swig.pyo
 pygen_swig_93917: swig/messageutils_swigPYTHON_wrap.cxx
 pygen_swig_93917: swig/messageutils_swig.py
-pygen_swig_93917: swig/messageutils_swig.tag
 pygen_swig_93917: swig/messageutils_swig_doc.i
+pygen_swig_93917: swig/messageutils_swig.tag
 pygen_swig_93917: swig/messageutils_swig_doc_swig_docs/xml/index.xml
 pygen_swig_93917: swig/CMakeFiles/pygen_swig_93917.dir/build.make
 .PHONY : pygen_swig_93917

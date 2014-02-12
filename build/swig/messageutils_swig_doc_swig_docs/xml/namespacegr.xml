@@ -7,6 +7,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/adam/src/gr-messageutils/include/messageutils/pdu_debug.h" line="28"/>
+    <location file="/home/adam/src/gr-messageutils/include/messageutils/message_thresh_switch.h" line="28"/>
   </compounddef>
 </doxygen>

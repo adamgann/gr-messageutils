@@ -69,14 +69,39 @@ lib/CMakeFiles/gnuradio-messageutils.dir/pdu_debug_impl.cc.o.provides: lib/CMake
 
 lib/CMakeFiles/gnuradio-messageutils.dir/pdu_debug_impl.cc.o.provides.build: lib/CMakeFiles/gnuradio-messageutils.dir/pdu_debug_impl.cc.o
 
+lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o: lib/CMakeFiles/gnuradio-messageutils.dir/flags.make
+lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o: ../lib/message_thresh_switch_impl.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/adam/src/gr-messageutils/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o"
+	cd /home/adam/src/gr-messageutils/build/lib && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o -c /home/adam/src/gr-messageutils/lib/message_thresh_switch_impl.cc
+
+lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.i"
+	cd /home/adam/src/gr-messageutils/build/lib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/adam/src/gr-messageutils/lib/message_thresh_switch_impl.cc > CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.i
+
+lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.s"
+	cd /home/adam/src/gr-messageutils/build/lib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/adam/src/gr-messageutils/lib/message_thresh_switch_impl.cc -o CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.s
+
+lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o.requires:
+.PHONY : lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o.requires
+
+lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o.provides: lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o.requires
+	$(MAKE) -f lib/CMakeFiles/gnuradio-messageutils.dir/build.make lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o.provides.build
+.PHONY : lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o.provides
+
+lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o.provides.build: lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o
+
 # Object files for target gnuradio-messageutils
 gnuradio__messageutils_OBJECTS = \
-"CMakeFiles/gnuradio-messageutils.dir/pdu_debug_impl.cc.o"
+"CMakeFiles/gnuradio-messageutils.dir/pdu_debug_impl.cc.o" \
+"CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o"
 
 # External object files for target gnuradio-messageutils
 gnuradio__messageutils_EXTERNAL_OBJECTS =
 
 lib/libgnuradio-messageutils.so: lib/CMakeFiles/gnuradio-messageutils.dir/pdu_debug_impl.cc.o
+lib/libgnuradio-messageutils.so: lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o
 lib/libgnuradio-messageutils.so: /usr/lib/libboost_filesystem-mt.so
 lib/libgnuradio-messageutils.so: /usr/lib/libboost_system-mt.so
 lib/libgnuradio-messageutils.so: /usr/local/lib/libgnuradio-runtime.so
@@ -90,6 +115,7 @@ lib/CMakeFiles/gnuradio-messageutils.dir/build: lib/libgnuradio-messageutils.so
 .PHONY : lib/CMakeFiles/gnuradio-messageutils.dir/build
 
 lib/CMakeFiles/gnuradio-messageutils.dir/requires: lib/CMakeFiles/gnuradio-messageutils.dir/pdu_debug_impl.cc.o.requires
+lib/CMakeFiles/gnuradio-messageutils.dir/requires: lib/CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o.requires
 .PHONY : lib/CMakeFiles/gnuradio-messageutils.dir/requires
 
 lib/CMakeFiles/gnuradio-messageutils.dir/clean:

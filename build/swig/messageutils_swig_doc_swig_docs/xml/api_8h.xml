@@ -3,6 +3,7 @@
   <compounddef id="api_8h" kind="file">
     <compoundname>api.h</compoundname>
     <includes local="no">gnuradio/attributes.h</includes>
+    <includedby refid="message__thresh__switch_8h" local="no">/home/adam/src/gr-messageutils/include/messageutils/message_thresh_switch.h</includedby>
     <includedby refid="pdu__debug_8h" local="no">/home/adam/src/gr-messageutils/include/messageutils/pdu_debug.h</includedby>
     <incdepgraph>
       <node id="0">
@@ -16,13 +17,19 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="3">
+        <label>/home/adam/src/gr-messageutils/include/messageutils/message_thresh_switch.h</label>
+        <link refid="message__thresh__switch_8h"/>
+      </node>
       <node id="2">
         <label>/home/adam/src/gr-messageutils/include/messageutils/api.h</label>
         <link refid="api.h"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>/home/adam/src/gr-messageutils/include/messageutils/pdu_debug.h</label>
         <link refid="pdu__debug_8h"/>
       </node>

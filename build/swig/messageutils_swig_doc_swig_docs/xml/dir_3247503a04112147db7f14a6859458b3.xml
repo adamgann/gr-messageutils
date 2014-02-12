@@ -3,6 +3,7 @@
   <compounddef id="dir_3247503a04112147db7f14a6859458b3" kind="dir">
     <compoundname>/home/adam/src/gr-messageutils/include/messageutils/</compoundname>
     <innerfile refid="api_8h">api.h</innerfile>
+    <innerfile refid="message__thresh__switch_8h">message_thresh_switch.h</innerfile>
     <innerfile refid="pdu__debug_8h">pdu_debug.h</innerfile>
     <briefdescription>
     </briefdescription>

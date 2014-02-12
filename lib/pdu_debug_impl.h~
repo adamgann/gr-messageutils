@@ -34,11 +34,10 @@ namespace gr {
       bool d_meta_only;
 
      public:
-      pdu_debug_impl(bool meta_only);
+      pdu_debug_impl(bool meta_only, bool display);
       ~pdu_debug_impl();
 
-      void print(pmt::pmt_t msg);  
-      void store(pmt::pmt_t msg);
+
       void print_pdu(pmt::pmt_t pdu);
       int num_messages();
       pmt::pmt_t get_message(int i);

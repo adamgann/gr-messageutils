@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/gnuradio-messageutils.dir/pdu_debug_impl.cc.o"
+  "CMakeFiles/gnuradio-messageutils.dir/message_thresh_switch_impl.cc.o"
   "libgnuradio-messageutils.pdb"
   "libgnuradio-messageutils.so"
 )

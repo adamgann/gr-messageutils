@@ -31,16 +31,20 @@ namespace gr {
   namespace messageutils {
 
     pdu_debug::sptr
-    pdu_debug::make(bool meta_only)
+    pdu_debug::make(bool meta_only, bool display)
     {
       return gnuradio::get_initial_sptr
-        (new pdu_debug_impl(meta_only));
+        (new pdu_debug_impl(meta_only, display));
     }
 
 
     void
     pdu_debug_impl::print_pdu(pmt::pmt_t pdu)
     {
+
+      if (!d_display)
+        return;
+
       pmt::pmt_t meta = pmt::car(pdu);
       pmt::pmt_t vector = pmt::cdr(pdu);
       
@@ -107,11 +111,11 @@ namespace gr {
 
 
 
-    pdu_debug_impl::pdu_debug_impl(bool meta_only)
+    pdu_debug_impl::pdu_debug_impl(bool meta_only, bool display)
       : gr::block("pdu_debug",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
-        d_meta_only(meta_only)
+        d_meta_only(meta_only), d_display(display)
 
     {
     

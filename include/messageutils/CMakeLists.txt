@@ -22,5 +22,6 @@
 ########################################################################
 install(FILES
     api.h
-    pdu_debug.h DESTINATION include/messageutils
+    pdu_debug.h
+    message_thresh_switch.h DESTINATION include/messageutils
 )

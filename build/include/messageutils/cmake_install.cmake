@@ -36,6 +36,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/messageutils" TYPE FILE FILES
     "/home/adam/src/gr-messageutils/include/messageutils/api.h"
     "/home/adam/src/gr-messageutils/include/messageutils/pdu_debug.h"
+    "/home/adam/src/gr-messageutils/include/messageutils/message_thresh_switch.h"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

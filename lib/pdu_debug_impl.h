@@ -32,9 +32,10 @@ namespace gr {
       gr::thread::mutex d_mutex;
       std::vector<pmt::pmt_t> d_messages;
       bool d_meta_only;
+      bool d_display;
 
      public:
-      pdu_debug_impl(bool meta_only);
+      pdu_debug_impl(bool meta_only, bool display);
       ~pdu_debug_impl();
 
 

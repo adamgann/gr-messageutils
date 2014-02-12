@@ -3,6 +3,7 @@
 
 swig/CMakeFiles/_messageutils_swig.dir/messageutils_swigPYTHON_wrap.cxx.o
  ../include/messageutils/api.h
+ ../include/messageutils/message_thresh_switch.h
  ../include/messageutils/pdu_debug.h
  /home/adam/src/gr-messageutils/build/swig/messageutils_swigPYTHON_wrap.cxx
  /usr/include/python2.7/Python.h

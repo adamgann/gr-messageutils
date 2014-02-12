@@ -6,8 +6,8 @@ FILE(REMOVE_RECURSE
   "messageutils_swig.pyo"
   "messageutils_swigPYTHON_wrap.cxx"
   "messageutils_swig.py"
-  "messageutils_swig.tag"
   "messageutils_swig_doc.i"
+  "messageutils_swig.tag"
   "messageutils_swig_doc_swig_docs/xml/index.xml"
 )
 

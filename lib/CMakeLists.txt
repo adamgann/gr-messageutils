@@ -26,6 +26,7 @@ include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 list(APPEND messageutils_sources
     pdu_debug_impl.cc
+    message_thresh_switch_impl.cc
 )
 
 add_library(gnuradio-messageutils SHARED ${messageutils_sources})
