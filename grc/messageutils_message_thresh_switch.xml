@@ -6,7 +6,7 @@
   <import>import messageutils</import>
   <make>messageutils.message_thresh_switch($type.size, $key, $thresh, $debug)</make>
 
-  <callback>set_threshold($threshold)</callback>
+  <callback>set_threshold($thresh)</callback>
 
     <param>
 	<name>Stream Type</name>
