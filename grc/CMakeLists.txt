@@ -18,5 +18,6 @@
 # Boston, MA 02110-1301, USA.
 install(FILES
     messageutils_pdu_debug.xml
-    messageutils_message_thresh_switch.xml DESTINATION share/gnuradio/grc/blocks
+    messageutils_message_thresh_switch.xml
+    messageutils_add_const_msg.xml DESTINATION share/gnuradio/grc/blocks
 )
