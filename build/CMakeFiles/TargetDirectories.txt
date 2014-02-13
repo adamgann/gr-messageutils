@@ -1,9 +1,0 @@
-/home/adam/src/gr-messageutils/build/swig/CMakeFiles/_messageutils_swig.dir
-/home/adam/src/gr-messageutils/build/swig/CMakeFiles/_messageutils_swig_doc_tag.dir
-/home/adam/src/gr-messageutils/build/swig/CMakeFiles/_messageutils_swig_swig_tag.dir
-/home/adam/src/gr-messageutils/build/lib/CMakeFiles/gnuradio-messageutils.dir
-/home/adam/src/gr-messageutils/build/apps/CMakeFiles/pygen_apps_9a6dd.dir
-/home/adam/src/gr-messageutils/build/python/CMakeFiles/pygen_python_01948.dir
-/home/adam/src/gr-messageutils/build/swig/CMakeFiles/pygen_swig_93917.dir
-/home/adam/src/gr-messageutils/build/lib/CMakeFiles/test-messageutils.dir
-/home/adam/src/gr-messageutils/build/CMakeFiles/uninstall.dir
