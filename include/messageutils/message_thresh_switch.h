@@ -54,6 +54,8 @@ namespace gr {
        * creating new instances.
        */
       static sptr make(size_t itemsize, std::string key, double thresh, bool debug);
+
+      virtual void set_threshold(double thresh) = 0;
     };
 
   } // namespace messageutils

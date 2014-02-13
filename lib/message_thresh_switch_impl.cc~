@@ -43,8 +43,8 @@ namespace gr {
         d_itemsize(itemsize), d_key(key), d_thresh(thresh), d_debug(debug) 
     {
         message_port_register_in(pmt::mp("msg"));
-        set_msg_handler(pmt::mp("msg"),
-        boost::bind(&message_thresh_switch_impl::handle_msg, this, _1));
+        //set_msg_handler(pmt::mp("msg"),
+        //boost::bind(&message_thresh_switch_impl::handle_msg, this, _1));
     }
 
 
@@ -56,8 +56,7 @@ namespace gr {
     void
     message_thresh_switch_impl::set_threshold(double thresh)
     {
-        d_thresh = threshold;
-
+        d_thresh = thresh;
     }
 
     void 
@@ -155,7 +154,6 @@ namespace gr {
         }
         */
 
-        
 
         return noutput_items;
     }

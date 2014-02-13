@@ -38,7 +38,7 @@ namespace gr {
      public:
       typedef boost::shared_ptr<message_thresh_switch> sptr;
 
-          enum value_thresh_comp_type
+      enum value_thresh_comp_type
       {
             VAL_ABOVE,
             VAL_BELOW,

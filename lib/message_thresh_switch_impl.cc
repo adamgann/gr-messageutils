@@ -57,7 +57,6 @@ namespace gr {
     message_thresh_switch_impl::set_threshold(double thresh)
     {
         d_thresh = thresh;
-
     }
 
     void 
@@ -155,7 +154,6 @@ namespace gr {
         }
         */
 
-        
 
         return noutput_items;
     }
