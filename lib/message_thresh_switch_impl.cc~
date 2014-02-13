@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2014 <+YOU OR YOUR COMPANY+>.
+ * Copyright 2014 Adam Gannon.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,14 +43,79 @@ namespace gr {
         d_itemsize(itemsize), d_key(key), d_thresh(thresh), d_debug(debug) 
     {
         message_port_register_in(pmt::mp("msg"));
+        set_msg_handler(pmt::mp("msg"),
+        boost::bind(&message_thresh_switch_impl::handle_msg, this, _1));
     }
 
 
     message_thresh_switch_impl::~message_thresh_switch_impl()
     {
-
-    
     }
+
+
+    void
+    message_thresh_switch_impl::set_threshold(double thresh)
+    {
+        d_thresh = threshold;
+
+    }
+
+    void 
+    message_thresh_switch_impl::handle_msg(pmt::pmt_t msg)
+    {
+        d_decode_msg = false;
+        
+        /* Chechk that received message contains metadata */
+        if (pmt::is_pair(msg))      
+        {
+            d_meta = pmt::car(msg);
+            d_vect = pmt::cdr(msg);
+            
+            if (!pmt::eq(d_meta, pmt::PMT_NIL) )
+                d_decode_msg = true;
+        }
+
+        if (d_decode_msg)
+        {
+            /* Get a list of stream tags, find one that matches key, get value */
+            pmt::pmt_t klist(pmt::dict_keys(d_meta));
+            for(size_t i=0; i<pmt::length(klist); i++)
+            {
+                pmt::pmt_t k(pmt::nth(i, klist));
+                pmt::pmt_t v(pmt::dict_ref(d_meta, k, pmt::PMT_NIL));
+
+                if (pmt::eq(k,pmt::string_to_symbol(d_key)))
+                {
+                    d_value = pmt::to_double(v);
+                    
+                    if (d_value > d_thresh)
+                        d_val_thresh_comp = VAL_ABOVE;
+                    else if (d_value < d_thresh)
+                        d_val_thresh_comp = VAL_BELOW;
+                    else
+                        d_val_thresh_comp = VAL_EQUAL;                    
+                }     
+            }
+    
+            /* Print Information if Debug */
+            if (d_debug)
+            {
+                std::cout<<"Key: "<< d_key<<std::setw(20);
+                std::cout<< std::fixed << std::setprecision(5);
+                std::cout<<"Thresh: "<<d_thresh<<std::setw(20);
+                std::cout<<"Value: "<<d_value<<std::setw(20);
+                std::cout<<"\tTrigger: "<< ((d_val_thresh_comp == VAL_ABOVE) ? ("ABOVE") : ("BELOW"));
+                std::cout<<std::endl;
+
+            }
+                       
+         }
+
+
+
+
+    }
+
 
     int
     message_thresh_switch_impl::work(int noutput_items,
@@ -61,47 +126,35 @@ namespace gr {
         char *out_above = (char *) output_items[0];
         char *out_below = (char *) output_items[1];
 
-        d_decode_msg = false;
-
-        
-        //Get possible message data and check if valid      TODO: Move all this shit to a message handler, if possible
-        pmt::pmt_t msg(delete_head_nowait(pmt::mp("msg")));
-        if (msg.get() != NULL)
-            if (pmt::is_pair(msg))      // TODO: implement pdu::is_valid()
-            {
-                d_meta = pmt::car(msg);
-                d_vect = pmt::cdr(msg);
-                
-                if (!pmt::eq(d_meta, pmt::PMT_NIL) )
-                    d_decode_msg = true;
-            }
-               
-        //If valid, decode
-        if (d_decode_msg)
+   
+        /* Output at either above or below depending on value and threshold */
+        if (d_val_thresh_comp == VAL_ABOVE)
         {
-
-            pmt::pmt_t klist(pmt::dict_keys(d_meta));
-            for(size_t i=0; i<pmt::length(klist); i++)
+            memcpy(out_above,signal,noutput_items*d_itemsize);
+            memset(out_below, 0.0, noutput_items * output_signature()->sizeof_stream_item(0)); 
+        }
+        else if (d_val_thresh_comp == VAL_BELOW)
+        {
+            memcpy(out_below,signal,noutput_items*d_itemsize);
+            memset(out_above, 0.0, noutput_items * output_signature()->sizeof_stream_item(0));     
+        }
+        /*
+        else
+        {
+            if (d_above_if_equal)
             {
-                pmt::pmt_t k(pmt::nth(i, klist));
-                pmt::pmt_t v(pmt::dict_ref(d_meta, k, pmt::PMT_NIL));
+                memcpy(out_above,signal,noutput_items*d_itemsize);
+                memset(out_below, 0.0, noutput_items * output_signature()->sizeof_stream_item(0)); 
+            }
+            else
+            {
+                memcpy(out_below,signal,noutput_items*d_itemsize);
+                memset(out_above, 0.0, noutput_items * output_signature()->sizeof_stream_item(0)); 
+            }
 
-                if (pmt::eq(k,pmt::string_to_symbol(d_key)))
-                    std::cout<<"Equal"<<std::endl;                  
+        }
+        */
 
-                d_value = pmt::to_double(v);
-                std::cout<<d_value<<std::endl;
-
-
-            }           
-         }
-
-        
-
-        
-
-        //Copy Output
-        memcpy(out_above,signal,noutput_items*d_itemsize);
         
 
         return noutput_items;

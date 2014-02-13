@@ -39,13 +39,22 @@ namespace gr {
 
       double d_value;
       std::string d_key;
+
+      value_thresh_comp_type d_val_thresh_comp;
+
+
+
     
 
      public:
       message_thresh_switch_impl(size_t itemsize, std::string key, double thresh, bool debug);
       ~message_thresh_switch_impl();
+    
+      void set_threshold(double thresh);
+      void handle_msg(pmt::pmt_t msg);
 
-      // Where all the action really happens
+   
+
       int work(int noutput_items,
 	       gr_vector_const_void_star &input_items,
 	       gr_vector_void_star &output_items);
