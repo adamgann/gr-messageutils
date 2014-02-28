@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2014 Adam Gannon.
+ * Copyright 2014 <+YOU OR YOUR COMPANY+>.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,40 +18,39 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_MESSAGEUTILS_PDU_DEBUG_IMPL_H
-#define INCLUDED_MESSAGEUTILS_PDU_DEBUG_IMPL_H
 
-#include <messageutils/pdu_debug.h>
+#ifndef INCLUDED_MESSAGEUTILS_WHITEN_BB_H
+#define INCLUDED_MESSAGEUTILS_WHITEN_BB_H
+
+#include <messageutils/api.h>
+#include <gnuradio/sync_block.h>
 
 namespace gr {
   namespace messageutils {
 
-    class pdu_debug_impl : public pdu_debug
+    /*!
+     * \brief <+description of block+>
+     * \ingroup messageutils
+     *
+     */
+    class MESSAGEUTILS_API whiten_bb : virtual public gr::sync_block
     {
-     private:
-      gr::thread::mutex d_mutex;
-      std::vector<pmt::pmt_t> d_messages;
-      bool d_meta_only;
-      bool d_display;
-      size_t d_type;
-
      public:
-      pdu_debug_impl(size_t type, bool meta_only, bool display);
-      ~pdu_debug_impl();
+      typedef boost::shared_ptr<whiten_bb> sptr;
 
-
-      void print_pdu(pmt::pmt_t pdu);
-      int num_messages();
-      pmt::pmt_t get_message(int i);
-
-      enum vector_disp_type{BYTE,FLOAT,
-    
-
-
+      /*!
+       * \brief Return a shared_ptr to a new instance of messageutils::whiten_bb.
+       *
+       * To avoid accidental use of raw pointers, messageutils::whiten_bb's
+       * constructor is in a private implementation
+       * class. messageutils::whiten_bb::make is the public interface for
+       * creating new instances.
+       */
+      static sptr make();
     };
 
   } // namespace messageutils
 } // namespace gr
 
-#endif /* INCLUDED_MESSAGEUTILS_PDU_DEBUG_IMPL_H */
+#endif /* INCLUDED_MESSAGEUTILS_WHITEN_BB_H */
 

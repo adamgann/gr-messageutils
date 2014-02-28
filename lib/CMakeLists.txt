@@ -28,7 +28,9 @@ list(APPEND messageutils_sources
     pdu_debug_impl.cc
     message_thresh_switch_impl.cc
     add_const_msg_impl.cc
-)
+    vector_pdu_source_impl.cc
+    framer_to_pdu_impl.cc
+    )
 
 add_library(gnuradio-messageutils SHARED ${messageutils_sources})
 target_link_libraries(gnuradio-messageutils ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})

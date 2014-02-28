@@ -47,9 +47,15 @@ namespace gr {
     class MESSAGEUTILS_API pdu_debug : virtual public gr::block
     {
      public:
+
+      enum vector_type{byte_t, float_t, complex_t};
+
       typedef boost::shared_ptr<pdu_debug> sptr;
 
-      static sptr make(bool meta_only, bool display);
+
+      static sptr make(size_t type, bool meta_only, bool display);
+
+
     };
 
   } // namespace messageutils

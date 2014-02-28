@@ -73,7 +73,6 @@ namespace gr {
             const uint8_t* d = (const uint8_t*) pmt::uniform_vector_elements(d_vect, offset);
 
             d_val = float((d[0])-'0');
-
             std::cout<<d_val<<std::endl;
         }
 

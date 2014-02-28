@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<block>
+  <name>Framer To PDU</name>
+  <key>messageutils_framer_to_pdu</key>
+  <category>Message Tools</category>
+  <import>import messageutils</import>
+  <make>messageutils.framer_to_pdu($debug)</make>
+
+  <param>
+    <name>Debug</name>
+    <key>debug</key>
+    <value>True</value>
+    <type>bool</type>
+  </param>
+
+
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+
+  <source>
+    <name>pdus</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+
+
+</block>

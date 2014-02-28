@@ -33,9 +33,10 @@ namespace gr {
       std::vector<pmt::pmt_t> d_messages;
       bool d_meta_only;
       bool d_display;
+      size_t d_type;
 
      public:
-      pdu_debug_impl(bool meta_only, bool display);
+      pdu_debug_impl(size_t type, bool meta_only, bool display);
       ~pdu_debug_impl();
 
 
@@ -43,7 +44,7 @@ namespace gr {
       int num_messages();
       pmt::pmt_t get_message(int i);
 
-      // Where all the action really happens
+      
     
 
 

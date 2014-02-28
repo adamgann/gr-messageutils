@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<block>
+  <name>Cector PDU Source</name>
+  <key>messageutils_vector_pdu_source</key>
+  <category>Message Tools</category>
+  <import>import messageutils</import>
+  <make>messageutils.vector_pdu_source($vector, $period, $debug)</make>
+
+  <callback>set_period($period)</callback>
+  <callback>set_vec($vector)</callback>
+
+  <param>
+	<name>Vector</name>
+	<key>vector</key>
+	<value>(0, 0, 0)</value>
+	<type>raw</type>
+  </param>
+
+  <param>
+    <name>Period (ms)</name>
+    <key>period</key>
+    <value>1000</value>
+    <type>real</type>
+  </param>
+
+  <param>
+    <name>Debug</name>
+    <key>debug</key>
+    <value>True</value>
+    <type>bool</type>  
+		    <option>
+			    <name>On</name>
+			    <key>True</key>
+		    </option>
+		    <option>
+			    <name>Off</name>
+			    <key>False</key>
+		    </option>
+    </param>
+    
+
+  <source>
+    <name>pdus</name>
+    <type>message</type>
+  </source>
+</block>

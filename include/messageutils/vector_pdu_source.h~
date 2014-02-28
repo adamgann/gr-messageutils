@@ -18,40 +18,36 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_MESSAGEUTILS_PDU_DEBUG_IMPL_H
-#define INCLUDED_MESSAGEUTILS_PDU_DEBUG_IMPL_H
 
-#include <messageutils/pdu_debug.h>
+#ifndef INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_H
+#define INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_H
+
+#include <messageutils/api.h>
+#include <gnuradio/block.h>
 
 namespace gr {
   namespace messageutils {
 
-    class pdu_debug_impl : public pdu_debug
+    /*!
+     * \brief <+description of block+>
+     * \ingroup messageutils
+     *
+     */
+    class MESSAGEUTILS_API vector_pdu_source : virtual public gr::block
     {
-     private:
-      gr::thread::mutex d_mutex;
-      std::vector<pmt::pmt_t> d_messages;
-      bool d_meta_only;
-      bool d_display;
-      size_t d_type;
-
      public:
-      pdu_debug_impl(size_t type, bool meta_only, bool display);
-      ~pdu_debug_impl();
+      typedef boost::shared_ptr<vector_pdu_source> sptr;
 
+      virtual void set_period(float period_ms) = 0;
+      virtual void set_vec(const std::vector<float> &data) = 0;
+      static sptr make(const std::vector<float> &data, float period_ms, bool debug);
 
-      void print_pdu(pmt::pmt_t pdu);
-      int num_messages();
-      pmt::pmt_t get_message(int i);
-
-      enum vector_disp_type{BYTE,FLOAT,
-    
-
+      //virtual pmt::pmt_t make_pdu_vector(const float *buf, size_t items) = 0;
 
     };
 
   } // namespace messageutils
 } // namespace gr
 
-#endif /* INCLUDED_MESSAGEUTILS_PDU_DEBUG_IMPL_H */
+#endif /* INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_H */
 

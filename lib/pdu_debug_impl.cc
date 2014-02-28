@@ -31,10 +31,10 @@ namespace gr {
   namespace messageutils {
 
     pdu_debug::sptr
-    pdu_debug::make(bool meta_only, bool display)
+    pdu_debug::make(size_t type, bool meta_only, bool display)
     {
       return gnuradio::get_initial_sptr
-        (new pdu_debug_impl(meta_only, display));
+        (new pdu_debug_impl(type, meta_only, display));
     }
 
 
@@ -45,46 +45,86 @@ namespace gr {
       if (!d_display)
         return;
 
-      pmt::pmt_t meta = pmt::car(pdu);
-      pmt::pmt_t vector = pmt::cdr(pdu);
+
       
       if (d_meta_only)
       {
-
+          pmt::pmt_t meta = pmt::car(pdu);
+          pmt::pmt_t vector = pmt::cdr(pdu);
           if (!pmt::eq(meta, pmt::PMT_NIL) )
           {
 
-              std::cout << "* MESSAGE DEBUG PRINT PDU METADATA *\n";
+              std::cout << "***********************************\n";
+              std::cout << "**** Meta Data ****\n";
               pmt::print(meta);
         
               
-              std::cout << "***********************************\n";
+              std::cout << "***********************************\n\n";
         
           }
 
       }//if meta_only
       else
       {
-              std::cout << "* MESSAGE DEBUG PRINT PDU VERBOSE *\n";
-              pmt::print(meta);
-        
-              size_t len = pmt::length(vector);
-              std::cout << "pdu_length = " << len << std::endl;
-              std::cout << "contents = " << std::endl;
-              size_t offset(0);
+          pmt::pmt_t meta = pmt::car(pdu);
+          pmt::pmt_t vector = pmt::cdr(pdu);
+    
+          std::cout << "***********************************\n";
+          std::cout << "**** Meta Data ****\n";
+          pmt::print(meta);
+    
+          std::cout << "\n**** PDU Data ****\n";
+          size_t len = pmt::length(vector);
+          std::cout << "PDU Length:  " << len;
+          std::cout<<std::setw(20)<<"Vector Type:  ";
+          size_t offset(0);
+
+          //Print PDU Blob based on type. TODO: Can probably get type from PDU. Make this a case/switch.
+          if (d_type == sizeof(char))
+          {
+              std::cout<<"Byte"<<std::endl;
+              std::cout<<"Contents: "<<std::endl;
               const uint8_t* d = (const uint8_t*) pmt::uniform_vector_elements(vector, offset);
-              for(size_t i=0; i<len; i+=16){
+              for(size_t i=0; i<len; i+=16)
+              {
                 printf("%04x: ", ((unsigned int)i));
-                for(size_t j=i; j<std::min(i+16,len); j++){
+                for(size_t j=i; j<std::min(i+16,len); j++)
+                {
                   printf("%02x ",d[j] );
                 }
-
-                std::cout << std::endl;
               }
+          }
 
-              std::cout << "***********************************\n";
+          else if (d_type == sizeof(float))
+          {
+              std::cout<<"Float"<<std::endl;
+              std::cout<<"Contents: "<<std::endl;
+              const float* d = (const float*) pmt::uniform_vector_elements(vector, offset);
+              for(size_t i=0; i<len; i+=16)
+              {
+                printf("%04x: ", ((unsigned int)i));
+                for(size_t j=i; j<std::min(i+16,len); j++)
+                {
+                  printf("%02f ",d[j] );
+                }
+              }
+          }
+          else if (d_type == sizeof(gr_complex))
+          {
+                std::cout<<"Complex"<<std::endl;
+                std::cout<<"Sorry. Didn't get around to handling complex yet."<<std::endl;
+          }
+
+          else
+          {
+                std::cout<<"Invalid type. How did you get here in the first place?"<<std::endl;
+          }
+
+          std::cout << std::endl;
+          std::cout << "***********************************\n\n";
 
       }
+    
     }
 
 
@@ -111,11 +151,11 @@ namespace gr {
 
 
 
-    pdu_debug_impl::pdu_debug_impl(bool meta_only, bool display)
+    pdu_debug_impl::pdu_debug_impl(size_t type, bool meta_only, bool display)
       : gr::block("pdu_debug",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
-        d_meta_only(meta_only), d_display(display)
+        d_type(type), d_meta_only(meta_only), d_display(display)
 
     {
     
