@@ -29,15 +29,18 @@ namespace gr {
     class vector_pdu_source_impl : public vector_pdu_source
     {
      private:
+      std::vector<int> d_data;    
       bool d_debug;
+      int d_type;
       bool d_finished;
       float d_period_ms;
       boost::shared_ptr<boost::thread> d_thread;
-      std::vector<float> d_data;
+      
+      long d_packet;
 
 
      public:
-      vector_pdu_source_impl(const std::vector<float> &data, float period_ms, bool debug);
+      vector_pdu_source_impl(const std::vector<int> &data, float period_ms, bool debug);
       ~vector_pdu_source_impl();
       void set_period(float period_ms);
       void send_pdu(void);

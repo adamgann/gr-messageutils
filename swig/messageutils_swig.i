@@ -13,6 +13,7 @@
 #include "messageutils/add_const_msg.h"
 #include "messageutils/vector_pdu_source.h"
 #include "messageutils/framer_to_pdu.h"
+#include "messageutils/vector_pdu_int.h"
 %}
 
 %include "messageutils/pdu_debug.h"
@@ -27,3 +28,5 @@ GR_SWIG_BLOCK_MAGIC2(messageutils, vector_pdu_source);
 GR_SWIG_BLOCK_MAGIC2(messageutils, framer_to_pdu);
 
 
+%include "messageutils/vector_pdu_int.h"
+GR_SWIG_BLOCK_MAGIC2(messageutils, vector_pdu_int);

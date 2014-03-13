@@ -17,6 +17,9 @@
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
 
+
+
+
 ########################################################################
 # Setup library
 ########################################################################
@@ -30,7 +33,7 @@ list(APPEND messageutils_sources
     add_const_msg_impl.cc
     vector_pdu_source_impl.cc
     framer_to_pdu_impl.cc
-    )
+    vector_pdu_int_impl.cc )
 
 add_library(gnuradio-messageutils SHARED ${messageutils_sources})
 target_link_libraries(gnuradio-messageutils ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})

@@ -46,3 +46,4 @@ GR_ADD_TEST(qa_message_thresh_switch ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE
 GR_ADD_TEST(qa_add_const_msg ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_add_const_msg.py)
 GR_ADD_TEST(qa_vector_pdu_source ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_vector_pdu_source.py)
 GR_ADD_TEST(qa_framer_to_pdu ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_framer_to_pdu.py)
+GR_ADD_TEST(qa_vector_pdu_int ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_vector_pdu_int.py)

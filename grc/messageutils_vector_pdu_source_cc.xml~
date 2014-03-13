@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <block>
-  <name>Vector PDU (Float)</name>
-  <key>messageutils_vector_pdu_source</key>
+  <name>Vector PDU Source SEL</name>
+  <key>messageutils_vector_pdu_source_xx</key>
   <category>Message Tools</category>
   <import>import messageutils</import>
-  <make>messageutils.vector_pdu_source($vector, $period, $debug)</make>s
+  <make>messageutils.vector_pdu_source_$(type.fcn)($vector, $period, $debug)</make>
 
   <callback>set_period($period)</callback>
   <callback>set_vec($vector)</callback>
@@ -23,32 +23,31 @@
     <type>real</type>
   </param>
 
-  <param>
-    <name>IO Type</name>
-    <key>type</key>
-    <value>2</value>
-    <type>int</type>
-    <option>
-        <name>Complex</name>
-        <key>1</key>
-    </option>
-    <option>
-        <name>Float</name>
-        <key>2</key>
-    </option>
-    <option>
-        <name>Int</name>
-        <key>3</key>
-    </option>
-    <option>
-        <name>Char</name>
-        <key>4</key>
-    </option>
-    <option>
-        <name>Short</name>
-        <key>5</key>
-    </option>
-  </param>
+    <param>
+		<name>IO Type</name>
+		<key>type</key>
+		<type>enum</type>
+		<option>
+			<name>Complex</name>
+			<key>complex</key>
+			<opt>fcn:cc</opt>
+		</option>
+		<option>
+			<name>Float</name>
+			<key>float</key>
+			<opt>fcn:ff</opt>
+		</option>
+		<option>
+			<name>Int</name>
+			<key>int</key>
+			<opt>fcn:ii</opt>
+		</option>
+		<option>
+			<name>Short</name>
+			<key>short</key>
+			<opt>fcn:ss</opt>
+		</option>
+	</param>
 
   <param>
     <name>Debug</name>

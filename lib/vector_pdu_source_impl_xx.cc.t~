@@ -51,8 +51,6 @@ namespace gr {
       message_port_register_out(pmt::mp("pdus"));
       d_thread = boost::shared_ptr<boost::thread>
         (new boost::thread(boost::bind(&vector_pdu_source_impl::send_pdu, this)));
-
-      d_finished = false;
     }
 
 
@@ -80,7 +78,8 @@ namespace gr {
     void 
     vector_pdu_source_impl::send_pdu()
     {
-     
+      
+      
       while(!d_finished) 
       {
         boost::this_thread::sleep(boost::posix_time::milliseconds(d_period_ms)); 
@@ -99,10 +98,10 @@ namespace gr {
         pmt::pmt_t d_pdu_meta = pmt::make_dict();
         d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Packet"), pmt::from_long(d_packet));
 
-        d_pdu_length = d_data.size();
-        d_pdu_vector = pmt::init_f32vector(d_pdu_length,d_data); 
-        d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Length"), pmt::from_long(d_data.size())); 
-                
+                d_pdu_length = d_data.size();
+                d_pdu_vector = pmt::init_f32vector(d_pdu_length,d_data); 
+                d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Length"), pmt::from_long(d_data.size())); 
+                break; 
 
         
 

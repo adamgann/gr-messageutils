@@ -22,5 +22,5 @@ install(FILES
     messageutils_add_const_msg.xml
     messageutils_vector_pdu_source.xml
     messageutils_framer_to_pdu.xml
-    DESTINATION share/gnuradio/grc/blocks
+    messageutils_vector_pdu_int.xml DESTINATION share/gnuradio/grc/blocks
 )

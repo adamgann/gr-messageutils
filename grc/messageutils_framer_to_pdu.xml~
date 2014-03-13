@@ -2,9 +2,9 @@
 <block>
   <name>Framer To PDU</name>
   <key>messageutils_framer_to_pdu</key>
-  <category>messageutils</category>
+  <category>Message Tools</category>
   <import>import messageutils</import>
-  <make>messageutils.framer_to_pdu($debug)</make>
+  <make>messageutils.framer_to_pdu($whiten, $debug)</make>
 
   <param>
     <name>Debug</name>
@@ -13,6 +13,12 @@
     <type>bool</type>
   </param>
 
+  <param>
+    <name>De-Whitening</name>
+    <key>whiten</key>
+    <value>True</value>
+    <type>bool</type>
+  </param>
 
   <sink>
     <name>in</name>

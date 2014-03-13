@@ -19,12 +19,11 @@
  */
 
 
-#ifndef INCLUDED_MESSAGEUTILS_FRAMER_TO_PDU_H
-#define INCLUDED_MESSAGEUTILS_FRAMER_TO_PDU_H
+#ifndef INCLUDED_MESSAGEUTILS_VECTOR_PDU_INT_H
+#define INCLUDED_MESSAGEUTILS_VECTOR_PDU_INT_H
 
 #include <messageutils/api.h>
-#include <gnuradio/sync_block.h>
-#include <gnuradio/msg_queue.h>
+#include <gnuradio/block.h>
 
 namespace gr {
   namespace messageutils {
@@ -34,24 +33,26 @@ namespace gr {
      * \ingroup messageutils
      *
      */
-    class MESSAGEUTILS_API framer_to_pdu : virtual public gr::sync_block
+    class MESSAGEUTILS_API vector_pdu_int : virtual public gr::block
     {
      public:
-      typedef boost::shared_ptr<framer_to_pdu> sptr;
+      typedef boost::shared_ptr<vector_pdu_int> sptr;
 
       /*!
-       * \brief Return a shared_ptr to a new instance of messageutils::framer_to_pdu.
+       * \brief Return a shared_ptr to a new instance of messageutils::vector_pdu_int.
        *
-       * To avoid accidental use of raw pointers, messageutils::framer_to_pdu's
+       * To avoid accidental use of raw pointers, messageutils::vector_pdu_int's
        * constructor is in a private implementation
-       * class. messageutils::framer_to_pdu::make is the public interface for
+       * class. messageutils::vector_pdu_int::make is the public interface for
        * creating new instances.
        */
-      static sptr make(bool whiten, bool d_debug);
+      virtual void set_period(float period_ms) = 0;
+      virtual void set_vec(const std::vector<uint8_t> &data) = 0;
+      static sptr make(const std::vector<uint8_t> &data, float period_ms, bool debug);;
     };
 
   } // namespace messageutils
 } // namespace gr
 
-#endif /* INCLUDED_MESSAGEUTILS_FRAMER_TO_PDU_H */
+#endif /* INCLUDED_MESSAGEUTILS_VECTOR_PDU_INT_H */
 

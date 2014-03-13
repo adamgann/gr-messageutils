@@ -18,10 +18,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H
-#define INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H
+#ifndef @GUARD_NAME_IMPL@
+#define @GUARD_NAME_IMPL@
 
-#include <messageutils/vector_pdu_source.h>
+#include <gnuradio/blocks/@NAME@.h>
 
 namespace gr {
   namespace messageutils {

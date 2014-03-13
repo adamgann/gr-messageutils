@@ -1,4 +1,4 @@
-# Copyright 2011,2012 Free Software Foundation, Inc.
+# Copyright 2011 Free Software Foundation, Inc.
 #
 # This file is part of GNU Radio
 #
@@ -16,19 +16,12 @@
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
-
-
-
-
-########################################################################
-# Install public header files
-########################################################################
 install(FILES
-    api.h
-    pdu_debug.h
-    message_thresh_switch.h
-    add_const_msg.h
-    vector_pdu_source.h
-    framer_to_pdu.h
-    vector_pdu_int.h DESTINATION include/messageutils
+    messageutils_pdu_debug.xml
+    messageutils_message_thresh_switch.xml
+    messageutils_add_const_msg.xml
+    messageutils_vector_pdu_source.xml
+    messageutils_framer_to_pdu.xml
+    messageutils_vector_pdu_source_cc.xml
+    DESTINATION share/gnuradio/grc/blocks
 )

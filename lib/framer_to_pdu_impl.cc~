@@ -73,18 +73,18 @@ namespace gr {
 
 
     framer_to_pdu::sptr
-    framer_to_pdu::make(bool debug)
+    framer_to_pdu::make(bool whiten, bool debug)
     {
       return gnuradio::get_initial_sptr
-        (new framer_to_pdu_impl(debug));
+        (new framer_to_pdu_impl(whiten, debug));
     }
 
 
-    framer_to_pdu_impl::framer_to_pdu_impl(bool debug)
+    framer_to_pdu_impl::framer_to_pdu_impl(bool whiten, bool debug)
       : gr::sync_block("framer_to_pdu",
               gr::io_signature::make(1, 1, sizeof(unsigned char)),
               gr::io_signature::make(0,0,0)),
-        d_debug(debug)
+        d_whiten(whiten), d_debug(debug)
     {
         enter_search();
         message_port_register_out(pmt::mp("pdus"));
@@ -106,7 +106,7 @@ unsigned int
 
 	
 	unsigned int
-   framer_to_pdu_impl::crc32(const std::string s)
+    framer_to_pdu_impl::crc32(const std::string s)
     {
       return crc32((const unsigned char *) s.data(), s.size());
     }
@@ -119,9 +119,14 @@ unsigned int
 	    if (len < 4)
 	            return false;
 	    unsigned char* buf=(unsigned char *)s.data();
-	    //for (int i=0;i<len;i++){                          //Dewhiten
-	    //	buf[i] = buf[i] ^ random_mask_tuple[i];
-	    //}
+        if (d_whiten)
+        {
+            std::cout<<"DEWHITEN"<<std::endl;
+	        for (int i=0;i<len;i++)   //Dewhiten the bits
+            {                          
+	            buf[i] = buf[i] ^ random_mask_tuple[i];
+	        }
+        }
        	unsigned int actual = crc32((const unsigned char *) buf,len-4);
 
 
@@ -276,7 +281,7 @@ unsigned int
 			                    memcpy(msg->msg(), d_packet, d_packetlen_cnt);
 			                    
                                 bool d_crc_result = check_crc(msg->to_string());
-			                    fprintf(stderr,"CRC32 Result: %d",d_crc_result);
+			                    fprintf(stderr,"CRC32 Result: %d. DW: %d",d_crc_result, d_whiten);
 
 
                                 //std::cout << (msg->to_string());
