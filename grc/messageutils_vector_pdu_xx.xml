@@ -2,7 +2,7 @@
 <block>
   <name>Vector PDU</name>
   <key>messageutils_vector_pdu_xx</key>
-  <category>Message Tools</category>
+  <category>Message Utils</category>
   <import>import messageutils</import>
   <make>messageutils.vector_pdu_source_$(type)($vector, $period, $debug)</make>
 

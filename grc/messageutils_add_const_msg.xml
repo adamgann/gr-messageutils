@@ -2,7 +2,7 @@
 <block>
   <name>Add Const From Msg</name>
   <key>messageutils_add_const_msg</key>
-  <category>Message Tools</category>
+  <category>Message Utils</category>
   <import>import messageutils</import>
   <make>messageutils.add_const_msg($type.size, $debug)</make>
   

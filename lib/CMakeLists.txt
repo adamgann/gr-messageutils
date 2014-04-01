@@ -31,7 +31,6 @@ list(APPEND messageutils_sources
     pdu_debug_impl.cc
     message_thresh_switch_impl.cc
     add_const_msg_impl.cc
-    framer_to_pdu_impl.cc
     vector_pdu_source_f_impl.cc
     vector_pdu_source_b_impl.cc )
 
@@ -48,26 +47,3 @@ install(TARGETS gnuradio-messageutils
     RUNTIME DESTINATION bin              # .dll file
 )
 
-########################################################################
-# Build and register unit test
-########################################################################
-include(GrTest)
-
-include_directories(${CPPUNIT_INCLUDE_DIRS})
-
-list(APPEND test_messageutils_sources
-    ${CMAKE_CURRENT_SOURCE_DIR}/test_messageutils.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/qa_messageutils.cc
-)
-
-add_executable(test-messageutils ${test_messageutils_sources})
-
-target_link_libraries(
-  test-messageutils
-  ${GNURADIO_RUNTIME_LIBRARIES}
-  ${Boost_LIBRARIES}
-  ${CPPUNIT_LIBRARIES}
-  gnuradio-messageutils
-)
-
-GR_ADD_TEST(test_messageutils test-messageutils)

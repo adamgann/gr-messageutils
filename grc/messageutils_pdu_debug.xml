@@ -2,7 +2,7 @@
 <block>
   <name>PDU Debug</name>
   <key>messageutils_pdu_debug</key>
-  <category>Debug Tools</category>
+  <category>Message Utils</category>
   <import>import messageutils</import>
   <make>messageutils.pdu_debug($vec_type.size, $meta_only, $display)</make>
 

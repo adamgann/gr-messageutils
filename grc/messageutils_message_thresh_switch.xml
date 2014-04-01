@@ -2,7 +2,7 @@
 <block>
   <name>Message Threshold Switch</name>
   <key>messageutils_message_thresh_switch</key>
-  <category>Message Tools</category>
+  <category>Message Utils</category>
   <import>import messageutils</import>
   <make>messageutils.message_thresh_switch($type.size, $key, $thresh, $debug)</make>
 
