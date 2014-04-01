@@ -25,4 +25,15 @@ GNU Radio source code directory. From the terminal:
 ###PDU Debug
 
 Adds a few options for debugging PDUs. Can select to print just the contents of the
-metadata to the console. 
+metadata to the console. The data type of the PDU data blob is selectable.
+
+###Vector PDU Source
+
+Creates a PDU with data blob containing elements of a vector. Type is selectable (float and byte 
+are implemented as of now). User can set period with which the message is sent. 
+
+
+
+
+
+Other blocks in the directory may not be operational
