@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <block>
-  <name>Vector PDU (Float)</name>
-  <key>messageutils_vector_pdu_source</key>
+  <name>Vector PDU</name>
+  <key>messageutils_vector_pdu_xx</key>
   <category>Message Tools</category>
   <import>import messageutils</import>
-  <make>messageutils.vector_pdu_source($vector, $period, $debug)</make>
+  <make>messageutils.vector_pdu_source_$(type)($vector, $period, $debug)</make>
 
   <callback>set_period($period)</callback>
   <callback>set_vec($vector)</callback>
@@ -26,34 +26,23 @@
   <param>
     <name>IO Type</name>
     <key>type</key>
-    <value>2</value>
-    <type>int</type>
-    <option>
-        <name>Complex</name>
-        <key>1</key>
-    </option>
+    <value>f</value>
+    <type>enum</type>
     <option>
         <name>Float</name>
-        <key>2</key>
+        <key>f</key>
     </option>
     <option>
-        <name>Int</name>
-        <key>3</key>
-    </option>
-    <option>
-        <name>Char</name>
-        <key>4</key>
-    </option>
-    <option>
-        <name>Short</name>
-        <key>5</key>
+        <name>Byte</name>
+        <key>b</key>
     </option>
   </param>
+
 
   <param>
     <name>Debug</name>
     <key>debug</key>
-    <value>True</value>
+    <value>False</value>
     <type>bool</type>  
 		    <option>
 			    <name>On</name>

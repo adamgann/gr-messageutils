@@ -126,6 +126,7 @@ namespace gr {
 
             std::cout<<"********** Vector Source Debug **********"<<std::endl;
             std::cout<<"Period:  "<<d_period_ms<<std::setw(20);
+			std::cout<<"Length:  "<<d_pdu_length<<std::setw(20);
             std::cout<<"Set Vector:  ";
             //for(int ii=0;ii<(d_data.size()-1);ii++)
             //    std::cout<<d_data[ii]<<", ";

@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2014 Adam Gannon.
+ * Copyright 2014 <+YOU OR YOUR COMPANY+>.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,15 +18,15 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H
-#define INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H
+#ifndef INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_F_IMPL_H
+#define INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_F_IMPL_H
 
-#include <messageutils/vector_pdu_source.h>
+#include <messageutils/vector_pdu_source_f.h>
 
 namespace gr {
   namespace messageutils {
 
-    class vector_pdu_source_impl : public vector_pdu_source
+    class vector_pdu_source_f_impl : public vector_pdu_source_f
     {
      private:
       std::vector<float> d_data;    
@@ -42,19 +42,15 @@ namespace gr {
 
 
      public:
-      vector_pdu_source_impl(const std::vector<float> &data, float period_ms, bool debug);
-      ~vector_pdu_source_impl();
+      vector_pdu_source_f_impl(const std::vector<float> &data, float period_ms, bool debug);
+      ~vector_pdu_source_f_impl();
       void set_period(float period_ms);
       void send_pdu(void);
       void set_vec(const std::vector<float> &data);
-
-      
-
-
     };
 
   } // namespace messageutils
 } // namespace gr
 
-#endif /* INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H */
+#endif /* INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_F_IMPL_H */
 

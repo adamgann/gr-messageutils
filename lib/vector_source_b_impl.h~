@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2014 Adam Gannon.
+ * Copyright 2014 <+YOU OR YOUR COMPANY+>.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,18 +18,18 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H
-#define INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H
+#ifndef INCLUDED_MESSAGEUTILS_VECTOR_SOURCE_B_IMPL_H
+#define INCLUDED_MESSAGEUTILS_VECTOR_SOURCE_B_IMPL_H
 
-#include <messageutils/vector_pdu_source.h>
+#include <messageutils/vector_source_b.h>
 
 namespace gr {
   namespace messageutils {
 
-    class vector_pdu_source_impl : public vector_pdu_source
+    class vector_source_b_impl : public vector_source_b
     {
      private:
-      std::vector<float> d_data;    
+      std::vector<uint8_t> d_data;    
       bool d_debug;
       int d_type;
       bool d_finished;
@@ -38,23 +38,16 @@ namespace gr {
       
       long d_packet;
 
-      unsigned int d_packet_cntr;
-
-
      public:
-      vector_pdu_source_impl(const std::vector<float> &data, float period_ms, bool debug);
-      ~vector_pdu_source_impl();
+      vector_source_b_impl(const std::vector<uint8_t> &data, float period_ms, bool debug);
+      ~vector_source_b_impl();
       void set_period(float period_ms);
       void send_pdu(void);
-      void set_vec(const std::vector<float> &data);
-
-      
-
-
+      void set_vec(const std::vector<uint8_t> &data);
     };
 
   } // namespace messageutils
 } // namespace gr
 
-#endif /* INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H */
+#endif /* INCLUDED_MESSAGEUTILS_VECTOR_SOURCE_B_IMPL_H */
 

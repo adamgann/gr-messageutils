@@ -23,29 +23,24 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "vector_pdu_int_impl.h"
-#include <cstdio>
-#include <iostream>
+#include "vector_pdu_source_f_impl.h"
 
 namespace gr {
   namespace messageutils {
 
-    vector_pdu_int::sptr
-    vector_pdu_int::make(const std::vector<uint8_t> &data, float period_ms, bool debug)
+    vector_pdu_source_f::sptr
+    vector_pdu_source_f::make(const std::vector<float> &data, float period_ms, bool debug)
     {
       return gnuradio::get_initial_sptr
-        (new vector_pdu_int_impl(data, period_ms, debug));
+        (new vector_pdu_source_f_impl(data, period_ms, debug));
     }
 
-    /*
-     * The private constructor
-     */
-    vector_pdu_int_impl::vector_pdu_int_impl(const std::vector<uint8_t> &data, float period_ms, bool debug)
-      : gr::block("vector_pdu_int",
+
+    vector_pdu_source_f_impl::vector_pdu_source_f_impl(const std::vector<float> &data, float period_ms, bool debug)
+      : gr::block("vector_pdu_source_f",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
-
-         d_debug(debug), d_packet(0)
+         d_debug(debug)
     {
 
       set_period(period_ms);
@@ -53,39 +48,38 @@ namespace gr {
 
       message_port_register_out(pmt::mp("pdus"));
       d_thread = boost::shared_ptr<boost::thread>
-        (new boost::thread(boost::bind(&vector_pdu_int_impl::send_pdu, this)));
+        (new boost::thread(boost::bind(&vector_pdu_source_f_impl::send_pdu, this)));
 
-        d_finished = false;
-        //d_finished = true;
+      d_finished = false;
+	}
 
-    }
 
-    
-    vector_pdu_int_impl::~vector_pdu_int_impl()
+    vector_pdu_source_f_impl::~vector_pdu_source_f_impl()
     {
       d_finished = true;
       d_thread->interrupt();
       d_thread->join();
     }
 
+
     void 
-    vector_pdu_int_impl::set_period(float period_ms)
+    vector_pdu_source_f_impl::set_period(float period_ms)
     {
         d_period_ms = period_ms;
     }
 
 
     void 
-    vector_pdu_int_impl::set_vec(const std::vector<uint8_t> &data)
+    vector_pdu_source_f_impl::set_vec(const std::vector<float> &data)
     {
         d_data = data;   
     }
 
 
     void 
-    vector_pdu_int_impl::send_pdu()
+    vector_pdu_source_f_impl::send_pdu()
     {
-      
+     
       while(!d_finished) 
       {
         boost::this_thread::sleep(boost::posix_time::milliseconds(d_period_ms)); 
@@ -96,16 +90,16 @@ namespace gr {
 
 
         //Create a PDU blob with data from vector 
-        
-        
+        size_t d_pdu_length;
+        pmt::pmt_t d_pdu_vector;
 
         //Make a PDU Metadata Dictionary to hold Packet Number and Length
         d_packet++;
         pmt::pmt_t d_pdu_meta = pmt::make_dict();
         d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Packet"), pmt::from_long(d_packet));
 
-        size_t d_pdu_length = d_data.size();
-        pmt::pmt_t d_pdu_vector = pmt::init_u8vector(d_pdu_length,d_data); 
+        d_pdu_length = d_data.size();
+        d_pdu_vector = pmt::init_f32vector(d_pdu_length,d_data); 
         d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Length"), pmt::from_long(d_data.size())); 
                 
 
@@ -119,12 +113,9 @@ namespace gr {
        
 
         //Create PDU 
-        if (d_packet <= 50)
-        {
-            pmt::pmt_t msg = pmt::cons(d_pdu_meta, d_pdu_vector);
-            message_port_pub(pmt::mp("pdus"),msg);
-        }
-    
+        pmt::pmt_t msg = pmt::cons(d_pdu_meta, d_pdu_vector);
+        message_port_pub(pmt::mp("pdus"),msg);
+       
 
 
         if (d_debug)
@@ -134,15 +125,13 @@ namespace gr {
 
             std::cout<<"********** Vector Source Debug **********"<<std::endl;
             std::cout<<"Period:  "<<d_period_ms<<std::setw(20);
+			std::cout<<"Length:  "<<d_pdu_length<<std::setw(20);
             std::cout<<"Set Vector:  ";
             //for(int ii=0;ii<(d_data.size()-1);ii++)
             //    std::cout<<d_data[ii]<<", ";
             //std::cout<<d_data[d_data.size()-1];
             
             std::cout<<std::setw(20)<<"Sent Vector: ";
-
-
-            std::cout<<d_packet<<std::endl;
             //for (int ii=0;ii<int(pmt::length(d_pdu_vector))-1;ii++)
             //{
             ///    std::cout<<d_vec_check[ii]<<", ";
@@ -158,8 +147,6 @@ namespace gr {
     }
     
 
-
   } /* namespace messageutils */
 } /* namespace gr */
-
 

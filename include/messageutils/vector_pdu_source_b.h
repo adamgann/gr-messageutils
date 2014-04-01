@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2014 Adam Gannon.
+ * Copyright 2014 <+YOU OR YOUR COMPANY+>.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,43 +18,33 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H
-#define INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H
 
-#include <messageutils/vector_pdu_source.h>
+#ifndef INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_B_H
+#define INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_B_H
+
+#include <messageutils/api.h>
+#include <gnuradio/block.h>
 
 namespace gr {
   namespace messageutils {
 
-    class vector_pdu_source_impl : public vector_pdu_source
+    /*!
+     * \brief <+description of block+>
+     * \ingroup messageutils
+     *
+     */
+    class MESSAGEUTILS_API vector_pdu_source_b : virtual public gr::block
     {
-     private:
-      std::vector<float> d_data;    
-      bool d_debug;
-      int d_type;
-      bool d_finished;
-      float d_period_ms;
-      boost::shared_ptr<boost::thread> d_thread;
-      
-      long d_packet;
-
-      unsigned int d_packet_cntr;
-
-
      public:
-      vector_pdu_source_impl(const std::vector<float> &data, float period_ms, bool debug);
-      ~vector_pdu_source_impl();
-      void set_period(float period_ms);
-      void send_pdu(void);
-      void set_vec(const std::vector<float> &data);
+      typedef boost::shared_ptr<vector_pdu_source_b> sptr;
 
-      
-
-
+      virtual void set_period(float period_ms) = 0;
+      virtual void set_vec(const std::vector<uint8_t> &data) = 0;
+      static sptr make(const std::vector<uint8_t> &data, float period_ms, bool debug);
     };
 
   } // namespace messageutils
 } // namespace gr
 
-#endif /* INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_IMPL_H */
+#endif /* INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_B_H */
 
