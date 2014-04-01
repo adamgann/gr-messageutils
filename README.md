@@ -27,13 +27,20 @@ GNU Radio source code directory. From the terminal:
 Adds a few options for debugging PDUs. Can select to print just the contents of the
 metadata to the console. The data type of the PDU data blob is selectable.
 
+
 ###Vector PDU Source
 
 Creates a PDU with data blob containing elements of a vector. Type is selectable (float and byte 
 are implemented as of now). User can set period with which the message is sent. 
 
 
+###Message Threshold Switch
+
+If the value of data contained in a message is below a threshold the block copies its input to 
+'above'. If the value of data is below the threshold the block copies its input to 'below'.
 
 
+###Add Constant From Message
 
-Other blocks in the directory may not be operational
+Adds an offset to the input data stream based on value received from a message. 
+
