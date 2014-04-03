@@ -21,12 +21,12 @@
 #ifndef INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_B_IMPL_H
 #define INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_B_IMPL_H
 
-#include <messageutils/vector_source_b.h>
+#include <messageutils/vector_pdu_source_b.h>
 
 namespace gr {
   namespace messageutils {
 
-    class vector_source_b_impl : public vector_source_b
+    class vector_pdu_source_b_impl : public vector_pdu_source_b
     {
      private:
       std::vector<uint8_t> d_data;    
@@ -37,10 +37,11 @@ namespace gr {
       boost::shared_ptr<boost::thread> d_thread;
       
       long d_packet;
+      bool d_tag_output;
 
      public:
-      vector_source_b_impl(const std::vector<uint8_t> &data, float period_ms, bool debug);
-      ~vector_source_b_impl();
+      vector_pdu_source_b_impl(const std::vector<uint8_t> &data, float period_ms, bool debug);
+      ~vector_pdu_source_b_impl();
       void set_period(float period_ms);
       void send_pdu(void);
       void set_vec(const std::vector<uint8_t> &data);

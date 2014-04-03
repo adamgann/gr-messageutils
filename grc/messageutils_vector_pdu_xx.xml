@@ -4,7 +4,7 @@
   <key>messageutils_vector_pdu_xx</key>
   <category>Message Utils</category>
   <import>import messageutils</import>
-  <make>messageutils.vector_pdu_source_$(type)($vector, $period, $debug)</make>
+  <make>messageutils.vector_pdu_source_$(type)($vector, $period, $tag_output, $debug)</make>
 
   <callback>set_period($period)</callback>
   <callback>set_vec($vector)</callback>
@@ -37,6 +37,21 @@
         <key>b</key>
     </option>
   </param>
+
+  <param>
+    <name>Tag Output</name>
+    <key>tag_output</key>
+    <value>False</value>
+    <type>bool</type>  
+		    <option>
+			    <name>Yes</name>
+			    <key>True</key>
+		    </option>
+		    <option>
+			    <name>No</name>
+			    <key>False</key>
+		    </option>
+    </param>
 
 
   <param>

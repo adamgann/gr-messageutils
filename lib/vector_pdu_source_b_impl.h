@@ -37,9 +37,10 @@ namespace gr {
       boost::shared_ptr<boost::thread> d_thread;
       
       long d_packet;
+      bool d_tag_output;
 
      public:
-      vector_pdu_source_b_impl(const std::vector<uint8_t> &data, float period_ms, bool debug);
+      vector_pdu_source_b_impl(const std::vector<uint8_t> &data, float period_ms, bool tag_output, bool debug);
       ~vector_pdu_source_b_impl();
       void set_period(float period_ms);
       void send_pdu(void);

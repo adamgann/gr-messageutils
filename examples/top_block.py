@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Feb 13 16:25:57 2014
+# Generated: Tue Apr  1 17:19:17 2014
 ##################################################
 
 from gnuradio import blocks
@@ -116,8 +116,8 @@ class top_block(grc_wxgui.top_block_gui):
         	y_axis_label="Counts",
         )
         self.notebook_0.GetPage(1).Add(self.wxgui_scopesink2_0.win)
-        self.messageutils_pdu_debug_0 = messageutils.pdu_debug(True, False)
-        self.messageutils_message_thresh_switch_0 = messageutils.message_thresh_switch(gr.sizeof_gr_complex, "snr", thresh, True)
+        self.messageutils_pdu_debug_0 = messageutils.pdu_debug(gr.sizeof_float, True, False)
+        self.messageutils_message_thresh_switch_0 = messageutils.message_thresh_switch(gr.sizeof_gr_complex, "snr", thresh, False)
         self.digital_psk_mod_0 = digital.psk.psk_mod(
           constellation_points=8,
           mod_code="gray",

@@ -29,19 +29,20 @@ namespace gr {
   namespace messageutils {
 
     vector_pdu_source_b::sptr
-    vector_pdu_source_b::make(const std::vector<uint8_t> &data, float period_ms, bool debug)
+    vector_pdu_source_b::make(const std::vector<uint8_t> &data, float period_ms, bool tag_output, bool debug)
     {
       return gnuradio::get_initial_sptr
-        (new vector_pdu_source_b_impl(data, period_ms, debug));
+        (new vector_pdu_source_b_impl(data, period_ms, tag_output, debug));
     }
 
 
-    vector_pdu_source_b_impl::vector_pdu_source_b_impl(const std::vector<uint8_t> &data, float period_ms, bool debug)
+    vector_pdu_source_b_impl::vector_pdu_source_b_impl(const std::vector<uint8_t> &data, float period_ms, 
+                                                      bool tag_output, bool debug)
       : gr::block("vector_pdu_source_b",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
 
-         d_debug(debug), d_packet(0)
+         d_tag_output(tag_output), d_debug(debug), d_packet(0)
     {
 		set_period(period_ms);
       	set_vec(data);
@@ -98,12 +99,15 @@ namespace gr {
         //Make a PDU Metadata Dictionary to hold Packet Number and Length
         d_packet++;
         pmt::pmt_t d_pdu_meta = pmt::make_dict();
-        d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Packet"), pmt::from_long(d_packet));
 
         size_t d_pdu_length = d_data.size();
         pmt::pmt_t d_pdu_vector = pmt::init_u8vector(d_pdu_length,d_data); 
-        d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Length"), pmt::from_long(d_data.size())); 
-                
+
+        if (d_tag_output)
+        {
+          d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Packet"), pmt::from_long(d_packet));
+          d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Length"), pmt::from_long(d_data.size())); 
+        }       
 
         
 

@@ -38,15 +38,9 @@ namespace gr {
      public:
       typedef boost::shared_ptr<vector_pdu_source_b> sptr;
 
-      /*!
-       * \brief Return a shared_ptr to a new instance of messageutils::vector_pdu_source_b.
-       *
-       * To avoid accidental use of raw pointers, messageutils::vector_pdu_source_b's
-       * constructor is in a private implementation
-       * class. messageutils::vector_pdu_source_b::make is the public interface for
-       * creating new instances.
-       */
-      static sptr make();
+      virtual void set_period(float period_ms) = 0;
+      virtual void set_vec(const std::vector<uint8_t> &data) = 0;
+      static sptr make(const std::vector<uint8_t> &data, float period_ms, bool debug);
     };
 
   } // namespace messageutils

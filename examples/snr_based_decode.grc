@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Thu Feb 13 16:35:52 2014</timestamp>
+  <timestamp>Tue Apr  1 17:19:17 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -681,53 +681,6 @@
     </param>
   </block>
   <block>
-    <key>messageutils_message_thresh_switch</key>
-    <param>
-      <key>id</key>
-      <value>messageutils_message_thresh_switch_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>key</key>
-      <value>"snr"</value>
-    </param>
-    <param>
-      <key>thresh</key>
-      <value>thresh</value>
-    </param>
-    <param>
-      <key>debug</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(698, 384)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>messageutils_pdu_debug</key>
     <param>
       <key>id</key>
@@ -736,6 +689,10 @@
     <param>
       <key>_enabled</key>
       <value>True</value>
+    </param>
+    <param>
+      <key>vec_type</key>
+      <value>float</value>
     </param>
     <param>
       <key>meta_only</key>
@@ -795,6 +752,53 @@
     <param>
       <key>_coordinate</key>
       <value>(336, 294)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>messageutils_message_thresh_switch</key>
+    <param>
+      <key>id</key>
+      <value>messageutils_message_thresh_switch_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>key</key>
+      <value>"snr"</value>
+    </param>
+    <param>
+      <key>thresh</key>
+      <value>thresh</value>
+    </param>
+    <param>
+      <key>debug</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(698, 384)</value>
     </param>
     <param>
       <key>_rotation</key>
