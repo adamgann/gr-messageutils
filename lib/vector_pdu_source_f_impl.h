@@ -38,15 +38,18 @@ namespace gr {
       
       long d_packet;
       bool d_tag_output;
-
+      unsigned int d_packet_lim;
+      bool limit_packets;
 
 
      public:
-      vector_pdu_source_f_impl(const std::vector<float> &data, float period_ms, bool tag_output, bool debug);
+      vector_pdu_source_f_impl(const std::vector<float> &data, float period_ms,
+                                bool tag_output, bool debug, unsigned int packet_lim);
       ~vector_pdu_source_f_impl();
       void set_period(float period_ms);
       void send_pdu(void);
       void set_vec(const std::vector<float> &data);
+      void set_limit(unsigned int packet_lim);
     };
 
   } // namespace messageutils

@@ -4,7 +4,7 @@
   <key>messageutils_vector_pdu_xx</key>
   <category>Message Utils</category>
   <import>import messageutils</import>
-  <make>messageutils.vector_pdu_source_$(type)($vector, $period, $tag_output, $debug)</make>
+  <make>messageutils.vector_pdu_source_$(type)($vector, $period, $tag_output, $debug, $pkt_lim)</make>
 
   <callback>set_period($period)</callback>
   <callback>set_vec($vector)</callback>
@@ -39,7 +39,7 @@
   </param>
 
   <param>
-    <name>Tag Output</name>
+    <name>Add Metadata</name>
     <key>tag_output</key>
     <value>False</value>
     <type>bool</type>  
@@ -52,6 +52,14 @@
 			    <key>False</key>
 		    </option>
     </param>
+
+  <param>
+    <name>Packet Limit</name>
+    <key>pkt_lim</key>
+    <value>0</value>
+    <type>int</type>
+    <hide>part</hide>
+  </param>
 
 
   <param>

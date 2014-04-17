@@ -40,7 +40,8 @@ namespace gr {
 
       virtual void set_period(float period_ms) = 0;
       virtual void set_vec(const std::vector<float> &data) = 0;
-      static sptr make(const std::vector<float> &data, float period_ms, bool tag_output, bool debug);
+      static sptr make(const std::vector<float> &data, float period_ms, 
+                        bool tag_output, bool debug, unsigned int packet_lim = 0);
     };
 
   } // namespace messageutils
