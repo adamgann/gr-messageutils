@@ -31,7 +31,8 @@ metadata to the console. The data type of the PDU data blob is selectable.
 ###Vector PDU Source
 
 Creates a PDU with data blob containing elements of a vector. Type is selectable (float and byte 
-are implemented as of now). User can set period with which the message is sent. 
+are implemented as of now). User can set period with which the message is sent and optionally set a limit
+on the number of messages sent.
 
 
 ###Message Threshold Switch
