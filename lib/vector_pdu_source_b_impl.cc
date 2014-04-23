@@ -115,36 +115,42 @@ namespace gr {
 
         d_packet++;
         if ((limit_packets) && (d_packet > d_packet_lim))
-          return;
+        {
+          //Do nothing
+        }
+        else
+        {
+
         
 
-        //Make a PDU Metadata Dictionary to hold Packet Number and Length
-        pmt::pmt_t d_pdu_meta = pmt::make_dict();
+          //Make a PDU Metadata Dictionary to hold Packet Number and Length
+          pmt::pmt_t d_pdu_meta = pmt::make_dict();
 
-        size_t d_pdu_length = d_data.size();
-        pmt::pmt_t d_pdu_vector = pmt::init_u8vector(d_pdu_length,d_data); 
+          size_t d_pdu_length = d_data.size();
+          pmt::pmt_t d_pdu_vector = pmt::init_u8vector(d_pdu_length,d_data); 
 
-        if (d_tag_output)
-        {
-          d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Packet"), pmt::from_long(d_packet));
-          d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Length"), pmt::from_long(d_data.size())); 
-        }       
+          if (d_tag_output)
+          {
+            d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Packet"), pmt::from_long(d_packet));
+            d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Length"), pmt::from_long(d_data.size())); 
+          }       
 
-        //Publish the PDU
-        pmt::pmt_t msg = pmt::cons(d_pdu_meta, d_pdu_vector);
-        message_port_pub(pmt::mp("pdus"),msg);
-        
+          //Publish the PDU
+          pmt::pmt_t msg = pmt::cons(d_pdu_meta, d_pdu_vector);
+          message_port_pub(pmt::mp("pdus"),msg);
+          
 
-        if (d_debug)
-        {
-            std::cout<<"********** Vector Source Debug **********"<<std::endl;
-            std::cout<<"Period:  "<<d_period_ms<<std::setw(20);
-			      std::cout<<"Length:  "<<d_pdu_length<<std::setw(20);
-            std::cout<<std::setw(20)<<"Sent Vector: "<<d_packet<<std::endl;
-            std::cout<<"*****************************************"<<std::endl;  
+          if (d_debug)
+          {
+              std::cout<<"********** Vector Source Debug **********"<<std::endl;
+              std::cout<<"Period:  "<<d_period_ms<<std::setw(20);
+			        std::cout<<"Length:  "<<d_pdu_length<<std::setw(20);
+              std::cout<<std::setw(20)<<"Sent Vector: "<<d_packet<<std::endl;
+              std::cout<<"*****************************************"<<std::endl;  
+          }
         }
 
-      }
+      }//while !d_finished
 
     }
 

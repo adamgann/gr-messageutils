@@ -4,28 +4,38 @@
   <key>messageutils_pdu_debug</key>
   <category>Message Utils</category>
   <import>import messageutils</import>
-  <make>messageutils.pdu_debug($vec_type.size, $meta_only, $display)</make>
+  <make>messageutils.pdu_debug($vec_type.size, $vec_type.ascii, $meta_only, $display)</make>
 
 
     <param>
-        <name>Vector Type</name>
-        <key>vec_type</key>
-        <type>enum</type>
-	<option>
-		<name>Float</name>
-		<key>float</key>
-		<opt>size:gr.sizeof_float</opt>
-	</option>
-	<option>
-		<name>Byte</name>
-		<key>byte</key>
-		<opt>size:gr.sizeof_char</opt>
-	</option>
-	<option>
-		<name>Complex</name>
-		<key>complex</key>
-		<opt>size:gr.sizeof_gr_complex</opt>
-	</option>
+      <name>Vector Type</name>
+      <key>vec_type</key>
+      <type>enum</type>
+
+	    <option>
+		    <name>ASCII</name>
+		    <key>text</key>
+        <opt>ascii:True</opt>
+		    <opt>size:gr.sizeof_char</opt>
+	    </option>
+	    <option>
+		    <name>Byte</name>
+		    <key>byte</key>
+        <opt>ascii:False</opt>
+		    <opt>size:gr.sizeof_char</opt>
+	    </option>
+	    <option>
+		    <name>Float</name>
+		    <key>float</key>
+        <opt>ascii:False</opt>
+		    <opt>size:gr.sizeof_float</opt>
+	    </option>
+	    <option>
+		    <name>Complex</name>
+		    <key>complex</key>
+        <opt>ascii:False</opt>
+		    <opt>size:gr.sizeof_gr_complex</opt>
+	    </option>
     </param>
 
 

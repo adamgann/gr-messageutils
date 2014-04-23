@@ -34,13 +34,15 @@ namespace gr {
       bool d_meta_only;
       bool d_display;
       size_t d_type;
+      bool d_print_ascii;
 
      public:
-      pdu_debug_impl(size_t type, bool meta_only, bool display);
+      pdu_debug_impl(size_t type, bool print_ascii, bool meta_only, bool display);
       ~pdu_debug_impl();
 
 
       void print_pdu(pmt::pmt_t pdu);
+      uint8_t reverse(uint8_t x);
       int num_messages();
       pmt::pmt_t get_message(int i);
 

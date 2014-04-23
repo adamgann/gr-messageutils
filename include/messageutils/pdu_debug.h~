@@ -53,7 +53,7 @@ namespace gr {
       typedef boost::shared_ptr<pdu_debug> sptr;
 
 
-      static sptr make(size_t , bool meta_only, bool display);
+      static sptr make(size_t type, bool print_ascii bool meta_only, bool display);
 
 
     };
