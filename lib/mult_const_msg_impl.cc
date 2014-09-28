@@ -30,18 +30,18 @@ namespace gr {
   namespace messageutils {
 
     mult_const_msg::sptr
-    mult_const_msg::make(float constant, bool debug)
+    mult_const_msg::make(float constant, int const_ind, bool debug)
     {
       return gnuradio::get_initial_sptr
-        (new mult_const_msg_impl(constant, debug));
+        (new mult_const_msg_impl(constant, const_ind, debug));
     }
 
 
-    mult_const_msg_impl::mult_const_msg_impl(float constant, bool debug)
+    mult_const_msg_impl::mult_const_msg_impl(float constant, int const_ind, bool debug)
       : gr::sync_block("mult_const_msg",
               gr::io_signature::make(1,1, sizeof(gr_complex)),
               gr::io_signature::make(1,1, sizeof(gr_complex))),
-            d_debug(debug), d_const(constant)
+            d_debug(debug), d_const(constant), d_const_ind(const_ind)
     {
       const int alignment_multiple =
 	      volk_get_alignment() / sizeof(gr_complex);
@@ -75,15 +75,16 @@ namespace gr {
             size_t offset(0);
             const float* d = (float*) pmt::uniform_vector_elements(d_vect, offset);
 
-            float d_temp = d[0];
 
-            if (len != 1)
-            {
-              if (d_debug){
-                std::cout<<"Got a PDU with more than one value. Skipping"<<std::endl;
-              }
-              return;
-            }
+//            if (len != 1)
+//            {
+//              if (d_debug){
+//                std::cout<<"Got a PDU with more than one value. Skipping"<<std::endl;
+//              }
+//              return;
+//            }
+
+            float d_temp = d[d_const_ind];
 
 
 

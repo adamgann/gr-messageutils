@@ -46,7 +46,7 @@ namespace gr {
        * class. messageutils::mult_const_msg::make is the public interface for
        * creating new instances.
        */
-      static sptr make(float constant, bool debug);
+      static sptr make(float constant, int const_ind, bool debug);
     };
 
   } // namespace messageutils

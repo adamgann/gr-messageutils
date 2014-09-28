@@ -31,9 +31,10 @@ namespace gr {
      private:
       bool d_debug; 
       float d_const;
+      int d_const_ind;
 
      public:
-      mult_const_msg_impl(float constant, bool debug);
+      mult_const_msg_impl(float constant, int const_ind, bool debug);
       ~mult_const_msg_impl();
       
       void handle_msg(pmt::pmt_t msg);

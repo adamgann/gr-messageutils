@@ -4,13 +4,20 @@
   <key>messageutils_mult_const_msg</key>
   <category>Message Utils</category>
   <import>import messageutils</import>
-  <make>messageutils.mult_const_msg($constant, $debug)</make>
+  <make>messageutils.mult_const_msg($constant, $const_ind, $debug)</make>
 
   <param>
     <name>Constant</name>
     <key>constant</key>
     <value>0</value>
     <type>float</type>
+  </param>
+  
+  <param>
+    <name>Constant Position</name>
+    <key>const_ind</key>
+    <value>0</value>
+    <type>int</type>
   </param>
 
     <param>
