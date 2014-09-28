@@ -37,7 +37,7 @@ namespace gr {
         (new pdu_debug_impl(type, print_ascii, meta_only, display));
     }
 
-    uint8_t pdu_debug_impl::left_justify(uint8_t b)
+    uint8_t pdu_debug_impl::reverse(uint8_t b)
     {
        b = (b & 0xF0) >> 4 | (b & 0x0F) << 4;
        b = (b & 0xCC) >> 2 | (b & 0x33) << 2;
@@ -100,11 +100,12 @@ namespace gr {
                 {
                   if (d_print_ascii)
                   {
-                    printf("%c", left_justify(d[j]));
+                    printf("%c", reverse(d[j]));
+                    printf("%c", (d[j]));
                   }
                   else
                   {
-                     printf("%02x ",d[j] );  //FIXME
+                     printf("%02x ",d[j] );
                   }
 
                     

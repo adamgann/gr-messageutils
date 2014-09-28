@@ -100,11 +100,12 @@ namespace gr {
                 {
                   if (d_print_ascii)
                   {
-                    printf("%c", reverse(d[j]));
+                    //printf("%c", reverse(d[j]));
+                    printf("%c", (d[j]));
                   }
                   else
                   {
-                     printf("%02x ",d[j] );  //FIXME
+                     printf("%02x ",d[j] );
                   }
 
                     

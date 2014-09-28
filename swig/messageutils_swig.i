@@ -13,6 +13,7 @@
 #include "messageutils/add_const_msg.h"
 #include "messageutils/vector_pdu_source_f.h"
 #include "messageutils/vector_pdu_source_b.h"
+#include "messageutils/mult_const_msg.h"
 %}
 
 %include "messageutils/pdu_debug.h"
@@ -27,3 +28,5 @@ GR_SWIG_BLOCK_MAGIC2(messageutils, add_const_msg);
 GR_SWIG_BLOCK_MAGIC2(messageutils, vector_pdu_source_f);
 %include "messageutils/vector_pdu_source_b.h"
 GR_SWIG_BLOCK_MAGIC2(messageutils, vector_pdu_source_b);
+%include "messageutils/mult_const_msg.h"
+GR_SWIG_BLOCK_MAGIC2(messageutils, mult_const_msg);

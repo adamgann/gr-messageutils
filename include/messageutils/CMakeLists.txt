@@ -29,5 +29,6 @@ install(FILES
     message_thresh_switch.h
     add_const_msg.h
     vector_pdu_source_f.h
-    vector_pdu_source_b.h DESTINATION include/messageutils
+    vector_pdu_source_b.h
+    mult_const_msg.h DESTINATION include/messageutils
 )

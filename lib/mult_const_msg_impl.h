@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2014 Adam Gannon.
+ * Copyright 2014 <+YOU OR YOUR COMPANY+>.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,42 +18,33 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_MESSAGEUTILS_PDU_DEBUG_IMPL_H
-#define INCLUDED_MESSAGEUTILS_PDU_DEBUG_IMPL_H
+#ifndef INCLUDED_MESSAGEUTILS_MULT_CONST_MSG_IMPL_H
+#define INCLUDED_MESSAGEUTILS_MULT_CONST_MSG_IMPL_H
 
-#include <messageutils/pdu_debug.h>
+#include <messageutils/mult_const_msg.h>
 
 namespace gr {
   namespace messageutils {
 
-    class pdu_debug_impl : public pdu_debug
+    class mult_const_msg_impl : public mult_const_msg
     {
      private:
-      gr::thread::mutex d_mutex;
-      std::vector<pmt::pmt_t> d_messages;
-      bool d_meta_only;
-      bool d_display;
-      size_t d_type;
-      bool d_print_ascii;
+      bool d_debug; 
+      float d_const;
 
      public:
-      pdu_debug_impl(size_t type, bool print_ascii, bool meta_only, bool display);
-      ~pdu_debug_impl();
-
-
-      void print_pdu(pmt::pmt_t pdu);
-      uint8_t reverse(uint8_t x);
-      int num_messages();
-      pmt::pmt_t get_message(int i);
-
+      mult_const_msg_impl(float constant, bool debug);
+      ~mult_const_msg_impl();
       
-    
+      void handle_msg(pmt::pmt_t msg);
 
-
+      int work(int noutput_items,
+	       gr_vector_const_void_star &input_items,
+	       gr_vector_void_star &output_items);
     };
 
   } // namespace messageutils
 } // namespace gr
 
-#endif /* INCLUDED_MESSAGEUTILS_PDU_DEBUG_IMPL_H */
+#endif /* INCLUDED_MESSAGEUTILS_MULT_CONST_MSG_IMPL_H */
 
