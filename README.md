@@ -25,7 +25,7 @@ GNU Radio source code directory. From the terminal:
 ###PDU Debug
 
 Adds a few options for debugging PDUs. Can select to print just the contents of the
-metadata to the console. The data type of the PDU data blob is selectable.
+metadata to the console. The data type of the PDU data blob is selectable. ASCII strings can be decoded from a PDU with its data in byte format. Byte order (reversed or not) can be selected. 
 
 
 ###Vector PDU Source

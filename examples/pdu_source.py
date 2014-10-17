@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Pdu Source
-# Generated: Thu Apr 17 19:22:42 2014
+# Generated: Fri Oct 17 15:23:09 2014
 ##################################################
 
 from gnuradio import eng_notation
@@ -25,14 +25,14 @@ class pdu_source(grc_wxgui.top_block_gui):
         # Variables
         ##################################################
         self.samp_rate = samp_rate = 32000
-        self.int_data = int_data = [1,2,3,4,5,6,7,8,9,10]
         self.float_data = float_data =  [0.3426 ,3.5784 ,2.7694,  0.5377, 1.8339, -2.2588, 0.8622, 0.3188, -1.3077, -0.4336]
+        self.ascii_bytes = ascii_bytes = [84, 104, 105, 115, 32, 105, 115, 32, 97, 32, 116, 101, 115, 116]
 
         ##################################################
         # Blocks
         ##################################################
-        self.messageutils_vector_pdu_xx_0 = messageutils.vector_pdu_source_f(float_data, 1000, True, False, 0)
-        self.messageutils_pdu_debug_0 = messageutils.pdu_debug(gr.sizeof_float, False, True)
+        self.messageutils_vector_pdu_xx_0 = messageutils.vector_pdu_source_b(ascii_bytes, 1000, True, False, 0)
+        self.messageutils_pdu_debug_0 = messageutils.pdu_debug(gr.sizeof_char, False, False, False, True)
 
         ##################################################
         # Asynch Message Connections
@@ -47,18 +47,18 @@ class pdu_source(grc_wxgui.top_block_gui):
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
 
-    def get_int_data(self):
-        return self.int_data
-
-    def set_int_data(self, int_data):
-        self.int_data = int_data
-
     def get_float_data(self):
         return self.float_data
 
     def set_float_data(self, float_data):
         self.float_data = float_data
-        self.messageutils_vector_pdu_xx_0.set_vec(self.float_data)
+
+    def get_ascii_bytes(self):
+        return self.ascii_bytes
+
+    def set_ascii_bytes(self, ascii_bytes):
+        self.ascii_bytes = ascii_bytes
+        self.messageutils_vector_pdu_xx_0.set_vec(self.ascii_bytes)
 
 if __name__ == '__main__':
     import ctypes

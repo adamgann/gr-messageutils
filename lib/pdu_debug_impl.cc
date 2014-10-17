@@ -31,10 +31,10 @@ namespace gr {
   namespace messageutils {
 
     pdu_debug::sptr
-    pdu_debug::make(size_t type,  bool print_ascii,bool meta_only, bool display)
+    pdu_debug::make(size_t type,  bool print_ascii, bool reverse_ascii, bool meta_only, bool display)
     {
       return gnuradio::get_initial_sptr
-        (new pdu_debug_impl(type, print_ascii, meta_only, display));
+        (new pdu_debug_impl(type, print_ascii, reverse_ascii, meta_only, display));
     }
 
     uint8_t pdu_debug_impl::reverse(uint8_t b)
@@ -100,8 +100,14 @@ namespace gr {
                 {
                   if (d_print_ascii)
                   {
-                    //printf("%c", reverse(d[j]));
-                    printf("%c", (d[j]));
+                    if (d_reverse_ascii)
+                    {
+                        printf("%c", reverse(d[j]));
+                    }
+                    else
+                    {
+                        printf("%c", (d[j])); 
+                    }
                   }
                   else
                   {
@@ -169,11 +175,11 @@ namespace gr {
 
 
 
-    pdu_debug_impl::pdu_debug_impl(size_t type,  bool print_ascii, bool meta_only, bool display)
+    pdu_debug_impl::pdu_debug_impl(size_t type,  bool print_ascii, bool reverse_ascii, bool meta_only, bool display)
       : gr::block("pdu_debug",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
-        d_type(type), d_print_ascii(print_ascii), d_meta_only(meta_only), d_display(display)
+        d_type(type), d_print_ascii(print_ascii), d_meta_only(meta_only), d_display(display), d_reverse_ascii(reverse_ascii)
 
     {
     

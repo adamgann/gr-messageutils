@@ -35,9 +35,10 @@ namespace gr {
       bool d_display;
       size_t d_type;
       bool d_print_ascii;
+      bool d_reverse_ascii;
 
      public:
-      pdu_debug_impl(size_t type, bool print_ascii, bool meta_only, bool display);
+      pdu_debug_impl(size_t type, bool print_ascii, bool reverse_ascii, bool meta_only, bool display);
       ~pdu_debug_impl();
 
 
