@@ -30,5 +30,6 @@ install(FILES
     add_const_msg.h
     vector_pdu_source_f.h
     vector_pdu_source_b.h
-    mult_const_msg.h DESTINATION include/messageutils
+    mult_const_msg.h
+    vector_pdu_source_c.h DESTINATION include/messageutils
 )

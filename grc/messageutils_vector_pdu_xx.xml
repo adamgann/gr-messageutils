@@ -29,6 +29,10 @@
     <value>f</value>
     <type>enum</type>
     <option>
+      <name>Complex</name>
+      <key>c</key>
+    </option>
+    <option>
         <name>Float</name>
         <key>f</key>
     </option>
