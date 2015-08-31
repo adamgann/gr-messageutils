@@ -9,5 +9,3 @@ This new vector is passed along. The data is now a vector of floats and the vect
 
 The corrected vector can be seen at the final PDU Debug. For comparison, a PDU Debug is connected directly to the
 output of the Socket to PDU. 
-
-

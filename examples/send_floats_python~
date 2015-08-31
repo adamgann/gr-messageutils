@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+import socket
+import struct
+
+UDP_IP = "127.0.0.1"
+UDP_PORT = 52001
+
+float_vec = [-1,1,-1,1,-1,-1,-1,-1]
+buf = struct.pack('%sf' % len(float_vec), *float_vec)
+
+
+sock = socket.socket(socket.AF_INET, # Internet
+             socket.SOCK_DGRAM) # UDP
+sock.sendto(buf, (UDP_IP, UDP_PORT))
+

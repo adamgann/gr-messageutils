@@ -22,6 +22,11 @@ GNU Radio source code directory. From the terminal:
 
 #Blocks
 
+###Socket PDU Repacker
+Floats are sent over UDP as bytes (4 bytes per float). The Socket PDU Repacker block repacks the received vector of bytes
+as a vector of floats fixing the data type and the vector length so they can be read by other blocks. 
+
+
 ###PDU Debug
 
 Adds a few options for debugging PDUs. Can select to print just the contents of the

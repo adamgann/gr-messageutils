@@ -34,7 +34,8 @@ list(APPEND messageutils_sources
     vector_pdu_source_f_impl.cc
     vector_pdu_source_b_impl.cc
     mult_const_msg_impl.cc
-    vector_pdu_source_c_impl.cc )
+    vector_pdu_source_c_impl.cc
+    socket_pdu_repack_impl.cc )
 
 add_library(gnuradio-messageutils SHARED ${messageutils_sources})
 target_link_libraries(gnuradio-messageutils ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})

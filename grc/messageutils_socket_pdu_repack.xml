@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<block>
+  <name>Socket PDU Repacker</name>
+  <key>messageutils_socket_pdu_repack</key>
+  <category>Message Utils</category>
+  <import>import messageutils</import>
+  <make>messageutils.socket_pdu_repack($vec_type.size,$debug)</make>
+
+  <param>
+    <name>Data Type</name>
+    <key>vec_type</key>
+    <type>enum</type>
+    <option>
+	    <name>Float</name>
+	    <key>float</key>
+	    <opt>size:gr.sizeof_float</opt>
+    </option>
+  </param>
+
+  <param>
+    <name>Debug</name>
+    <key>debug</key>
+    <value>False</value>
+    <type>bool</type>  
+	    <option>
+		    <name>On</name>
+		    <key>True</key>
+	    </option>
+	    <option>
+		    <name>Off</name>
+		    <key>False</key>
+	    </option>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>message</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>message</type>
+  </source>
+</block>

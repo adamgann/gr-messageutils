@@ -4,7 +4,7 @@
   <key>messageutils_pdu_debug</key>
   <category>Message Utils</category>
   <import>import messageutils</import>
-  <make>messageutils.pdu_debug($vec_type.size, $vec_type.ascii, $meta_only, $display)</make>
+  <make>messageutils.pdu_debug($vec_type.size, $vec_type.ascii, $reverse_ascii, $meta_only, $display)</make>
 
 
     <param>
@@ -17,25 +17,45 @@
 		    <key>text</key>
         <opt>ascii:True</opt>
 		    <opt>size:gr.sizeof_char</opt>
+		    <opt>hide_rev:</opt>
 	    </option>
 	    <option>
 		    <name>Byte</name>
 		    <key>byte</key>
         <opt>ascii:False</opt>
 		    <opt>size:gr.sizeof_char</opt>
+        <opt>hide_rev:all</opt>
 	    </option>
 	    <option>
 		    <name>Float</name>
 		    <key>float</key>
         <opt>ascii:False</opt>
 		    <opt>size:gr.sizeof_float</opt>
+        <opt>hide_rev:all</opt>
 	    </option>
 	    <option>
 		    <name>Complex</name>
 		    <key>complex</key>
         <opt>ascii:False</opt>
 		    <opt>size:gr.sizeof_gr_complex</opt>
+        <opt>hide_rev:all</opt>
 	    </option>
+    </param>
+    
+    <param>
+      <name>Byte Order</name>
+      <key>reverse_ascii</key>
+      <value>True</value>
+      <type>bool</type>
+      <hide>$vec_type.hide_rev</hide>
+        <option>
+          <name>Forward</name>
+          <key>False</key>
+        </option>
+        <option>
+          <name>Reversed</name>
+          <key>True</key>
+        </option>
     </param>
 
 

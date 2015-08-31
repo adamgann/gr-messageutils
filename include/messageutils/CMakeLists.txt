@@ -31,5 +31,6 @@ install(FILES
     vector_pdu_source_f.h
     vector_pdu_source_b.h
     mult_const_msg.h
-    vector_pdu_source_c.h DESTINATION include/messageutils
+    vector_pdu_source_c.h
+    socket_pdu_repack.h DESTINATION include/messageutils
 )

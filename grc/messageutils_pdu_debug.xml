@@ -62,7 +62,7 @@
     <param>
         <name>Metadata Only</name>
         <key>meta_only</key>
-        <value>True</value>
+        <value>False</value>
         <type>bool</type>
 		    <option>
 			    <name>True</name>
