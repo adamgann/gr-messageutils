@@ -26,6 +26,9 @@ GNU Radio source code directory. From the terminal:
 Floats are sent over UDP as bytes (4 bytes per float). The Socket PDU Repacker block repacks the received vector of bytes
 as a vector of floats fixing the data type and the vector length so they can be read by other blocks. 
 
+The direction is set as Input (from external socket to GNU Radio blocks) or Output (from GNU Radio blocks to 
+an external socket)
+
 
 ###PDU Debug
 

@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Mon Aug 31 12:29:46 2015
+# Generated: Mon Aug 31 17:51:43 2015
 ##################################################
 
 from gnuradio import blocks
@@ -25,17 +25,18 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         # Blocks
         ##################################################
-        self.messageutils_socket_pdu_repack_0 = messageutils.socket_pdu_repack(gr.sizeof_float,True)
+        self.messageutils_socket_pdu_repack_0 = messageutils.socket_pdu_repack(gr.sizeof_float,True,False)
         self.messageutils_pdu_debug_1 = messageutils.pdu_debug(gr.sizeof_float, False, True, False, True)
-        self.messageutils_pdu_debug_0 = messageutils.pdu_debug(gr.sizeof_float, False, True, False, True)
+        self.messageutils_pdu_debug_0_0 = messageutils.pdu_debug(gr.sizeof_char, False, True, False, True)
+        self.blocks_socket_pdu_0_0 = blocks.socket_pdu("UDP_SERVER", "127.0.0.1", "52002", 10000, False)
         self.blocks_socket_pdu_0 = blocks.socket_pdu("UDP_SERVER", "127.0.0.1", "52001", 10000, False)
 
         ##################################################
         # Asynch Message Connections
         ##################################################
-        self.msg_connect(self.blocks_socket_pdu_0, "pdus", self.messageutils_pdu_debug_0, "pdus")
         self.msg_connect(self.messageutils_socket_pdu_repack_0, "out", self.messageutils_pdu_debug_1, "pdus")
         self.msg_connect(self.blocks_socket_pdu_0, "pdus", self.messageutils_socket_pdu_repack_0, "in")
+        self.msg_connect(self.blocks_socket_pdu_0_0, "pdus", self.messageutils_pdu_debug_0_0, "pdus")
 
 
 if __name__ == '__main__':

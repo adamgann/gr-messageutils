@@ -32,10 +32,11 @@ namespace gr {
     {
      private:
       size_t d_type;
+      bool d_input;
       bool d_debug;
 
      public:
-      socket_pdu_repack_impl(size_t type, bool debug);
+      socket_pdu_repack_impl(size_t type, bool input, bool debug);
       ~socket_pdu_repack_impl();
 
       void handle_msg(pmt::pmt_t msg);

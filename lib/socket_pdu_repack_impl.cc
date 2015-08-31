@@ -29,17 +29,17 @@ namespace gr {
   namespace messageutils {
 
     socket_pdu_repack::sptr
-    socket_pdu_repack::make(size_t type, bool debug)
+    socket_pdu_repack::make(size_t type, bool input, bool debug)
     {
       return gnuradio::get_initial_sptr
-        (new socket_pdu_repack_impl(type, debug));
+        (new socket_pdu_repack_impl(type, input, debug));
     }
 
-    socket_pdu_repack_impl::socket_pdu_repack_impl(size_t type, bool debug)
+    socket_pdu_repack_impl::socket_pdu_repack_impl(size_t type, bool input, bool debug)
       : gr::block("socket_pdu_repack",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
-      d_type(type), d_debug(debug)
+      d_type(type), d_input(input), d_debug(debug)
     {
       //Set up Message Handling        
       message_port_register_in(pmt::mp("in"));
@@ -66,24 +66,49 @@ namespace gr {
       // Grab the data blob and metadata 
       pmt::pmt_t d_meta = pmt::car(msg);
       pmt::pmt_t d_vect = pmt::cdr(msg);
-      size_t pdu_len = pmt::length(d_vect)/d_type; //Socket sends bytes, we want to divide by number of bytes per sample (4 for floats, 8 for complex)
-      size_t offset(0);
+
 
       if (d_type == sizeof(float))
       {
-        // Grab float vector
-        const float* d = (float*) pmt::uniform_vector_elements(d_vect, offset); 
-        std::vector<float> msg_data;
-        msg_data.assign(d,d+pdu_len);
+        if (d_input)
+        {
+          //Get sizes
+          size_t pdu_len = pmt::length(d_vect)/d_type; //Socket sends bytes, we want to divide by number of bytes per sample (4 for floats, 8 for complex)
+          size_t offset(0);
 
-        dout<<"Repacker received vector  ";
-        for (int jj=0;jj<pdu_len;jj++) dout<<msg_data[jj]<<", ";
-        dout<<std::endl;
+          // Grab float vector
+          const float* d = (float*) pmt::uniform_vector_elements(d_vect, offset); 
+          std::vector<float> msg_data;
+          msg_data.assign(d,d+pdu_len);
 
-        // Pack the new vector into PDU and send
-        pmt::pmt_t send_vect = pmt::init_f32vector(pdu_len,msg_data); 
-        pmt::pmt_t msg = pmt::cons(d_meta , send_vect);
-        message_port_pub(pmt::mp("out"),msg);
+          dout<<"Repacker received vector  ";
+          for (int jj=0;jj<pdu_len;jj++) dout<<msg_data[jj]<<", ";
+          dout<<std::endl;
+
+          // Pack the new vector into PDU and send
+          pmt::pmt_t send_vect = pmt::init_f32vector(pdu_len,msg_data); 
+          pmt::pmt_t msg = pmt::cons(d_meta , send_vect);
+          message_port_pub(pmt::mp("out"),msg);
+        }
+        else
+        {
+          std::cout<<"Output chosen"<<std::endl;
+          size_t pdu_len = pmt::length(d_vect)*d_type;
+          size_t offset(0);
+          
+          const uint8_t* d = (uint8_t*) pmt::uniform_vector_elements(d_vect, offset); 
+          std::vector<uint8_t> msg_data;
+          msg_data.assign(d,d+pdu_len);
+    
+          std::cout<<"Assigned "<<pdu_len<<" elements"<<std::endl;// starting with "<<msg_data[0]<<std::endl;
+         
+          // Pack the new vector into PDU and send
+          pmt::pmt_t send_vect = pmt::init_u8vector(pdu_len,msg_data); 
+          pmt::pmt_t msg = pmt::cons(d_meta , send_vect);
+          message_port_pub(pmt::mp("out"),msg);
+          
+
+        }
 
       }
       else

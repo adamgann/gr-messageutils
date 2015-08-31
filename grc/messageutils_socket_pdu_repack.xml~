@@ -15,12 +15,23 @@
 	    <key>float</key>
 	    <opt>size:gr.sizeof_float</opt>
     </option>
-    <option>
-	    <name>Complex</name>
-	    <key>complex</key>
-	    <opt>size:gr.sizeof_gr_complex</opt>
-    </option>
   </param>
+
+  <param>
+    <name>Direction</name>
+    <key>input</key>
+    <value>True</value>
+    <type>bool</type>  
+	    <option>
+		    <name>Input</name>
+		    <key>True</key>
+	    </option>
+	    <option>
+		    <name>Output</name>
+		    <key>False</key>
+	    </option>
+  </param>
+
 
   <param>
     <name>Debug</name>

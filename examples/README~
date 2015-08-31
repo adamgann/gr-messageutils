@@ -1,11 +1,22 @@
 Testing Socket PDU Repacker
 
-Open socket_pdu_repacker.grc and run. 
-Open send_floats_python.py and run.
+Two flowgrahps and accompanying Python files are included. 
 
-The output of the Socket should be a PDU vector of bytes (4 bytes per float).
-To reinterpret the vector as floats, we read the vector (dividing the length by 4 to get the number of floats). 
-This new vector is passed along. The data is now a vector of floats and the vector length is correct.
+Input (Python to GRC):
+  Open socket_pdu_repacker_input.grc and run. 
+  Open send_socket_python.py and run.
 
-The corrected vector can be seen at the final PDU Debug. For comparison, a PDU Debug is connected directly to the
-output of the Socket to PDU. 
+  This will write a vector of floats to socket 52001 and a vector of bytes to 52002
+  The Socket PDU Repacker will handle the conversion to floats and change the PDU length accordingly
+
+Output (GRC to Python):
+  Open read_socket_python.py and run. 
+  Open socket_pdu_repacker_output.grc and run.
+
+  This will use Vector PDU sources to write floats to socket 52001 and bytes to 52002.
+  The Socket PDU repacker at the output will convert the floats to their 4-byte representation for UDP
+  The Python script will use the struct library to unpack the received UDP messages into vectors. 
+  There will be one vector for floats and one vector for bytes. 
+
+
+

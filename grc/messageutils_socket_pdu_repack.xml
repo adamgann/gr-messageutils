@@ -4,7 +4,7 @@
   <key>messageutils_socket_pdu_repack</key>
   <category>Message Utils</category>
   <import>import messageutils</import>
-  <make>messageutils.socket_pdu_repack($vec_type.size,$debug)</make>
+  <make>messageutils.socket_pdu_repack($vec_type.size,$input,$debug)</make>
 
   <param>
     <name>Data Type</name>
@@ -16,6 +16,22 @@
 	    <opt>size:gr.sizeof_float</opt>
     </option>
   </param>
+
+  <param>
+    <name>Direction</name>
+    <key>input</key>
+    <value>True</value>
+    <type>bool</type>  
+	    <option>
+		    <name>Input</name>
+		    <key>True</key>
+	    </option>
+	    <option>
+		    <name>Output</name>
+		    <key>False</key>
+	    </option>
+  </param>
+
 
   <param>
     <name>Debug</name>

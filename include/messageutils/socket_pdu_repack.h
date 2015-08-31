@@ -34,7 +34,7 @@ namespace gr {
      public:
       typedef boost::shared_ptr<socket_pdu_repack> sptr;
 
-      static sptr make(size_t type, bool debug);
+      static sptr make(size_t type, bool input, bool debug);
     };
 
   } // namespace messageutils
