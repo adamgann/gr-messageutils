@@ -45,6 +45,7 @@ namespace gr {
     {
       set_period(period_ms);
       set_vec(data);
+      set_limit(packet_lim);
 
       message_port_register_out(pmt::mp("pdus"));
       d_thread = boost::shared_ptr<boost::thread>
@@ -107,14 +108,19 @@ namespace gr {
 
         d_packet++;
         if ((limit_packets) && (d_packet > d_packet_lim))
+        {
           return;
+        }
+
 
 
         //Make a PDU Metadata Dictionary to hold Packet Number and Length
         pmt::pmt_t d_pdu_meta = pmt::make_dict();
 
+
         size_t d_pdu_length = d_data.size();
         pmt::pmt_t d_pdu_vector = pmt::init_c32vector(d_pdu_length,d_data); 
+
 
         if (d_tag_output)
         {
@@ -122,7 +128,6 @@ namespace gr {
           d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Length"), pmt::from_long(d_data.size())); 
         }        
 
-        
 
         //Publish the PDU
         pmt::pmt_t msg = pmt::cons(d_pdu_meta, d_pdu_vector);

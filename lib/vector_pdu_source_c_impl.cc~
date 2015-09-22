@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2014 <+YOU OR YOUR COMPANY+>.
+ * Copyright 2015 <+YOU OR YOUR COMPANY+>.
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,63 +23,58 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "vector_pdu_source_f_impl.h"
+#include "vector_pdu_source_c_impl.h"
 
 namespace gr {
   namespace messageutils {
 
-    vector_pdu_source_f::sptr
-    vector_pdu_source_f::make(const std::vector<float> &data, float period_ms,
+    vector_pdu_source_c::sptr
+    vector_pdu_source_c::make(const std::vector<gr_complex> &data, float period_ms,
                                 bool tag_output, bool debug, unsigned int packet_lim)
     {
       return gnuradio::get_initial_sptr
-        (new vector_pdu_source_f_impl(data, period_ms, tag_output, debug, packet_lim));
+        (new vector_pdu_source_c_impl(data, period_ms, tag_output, debug, packet_lim));
     }
 
-
-    vector_pdu_source_f_impl::vector_pdu_source_f_impl(const std::vector<float> &data, float period_ms, 
-                                                        bool tag_output, bool debug, unsigned int packet_lim)
-      : gr::block("vector_pdu_source_f",
+    vector_pdu_source_c_impl::vector_pdu_source_c_impl(const std::vector<gr_complex> &data, float period_ms,
+                                bool tag_output, bool debug, unsigned int packet_lim)
+      : gr::block("vector_pdu_source_c",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
          d_tag_output(tag_output), d_debug(debug), d_packet(0)
     {
-
       set_period(period_ms);
       set_vec(data);
       set_limit(packet_lim);
 
       message_port_register_out(pmt::mp("pdus"));
       d_thread = boost::shared_ptr<boost::thread>
-        (new boost::thread(boost::bind(&vector_pdu_source_f_impl::send_pdu, this)));
+        (new boost::thread(boost::bind(&vector_pdu_source_c_impl::send_pdu, this)));
 
       d_finished = false;
-	}
+    }
 
-
-    vector_pdu_source_f_impl::~vector_pdu_source_f_impl()
+    vector_pdu_source_c_impl::~vector_pdu_source_c_impl()
     {
       d_finished = true;
       d_thread->interrupt();
       d_thread->join();
     }
 
-
     void 
-    vector_pdu_source_f_impl::set_period(float period_ms)
+    vector_pdu_source_c_impl::set_period(float period_ms)
     {
         d_period_ms = period_ms;
     }
 
-
     void 
-    vector_pdu_source_f_impl::set_vec(const std::vector<float> &data)
+    vector_pdu_source_c_impl::set_vec(const std::vector<gr_complex> &data)
     {
         d_data = data;   
     }
 
     void 
-    vector_pdu_source_f_impl::set_limit(unsigned int packet_lim)
+    vector_pdu_source_c_impl::set_limit(unsigned int packet_lim)
     {
       /* Check if we wish to limit number of packets output,
        * if so, set the limit */
@@ -99,9 +94,8 @@ namespace gr {
 
     }
 
-
     void 
-    vector_pdu_source_f_impl::send_pdu()
+    vector_pdu_source_c_impl::send_pdu()
     {
      
       while(!d_finished) 
@@ -115,14 +109,19 @@ namespace gr {
         d_packet++;
         if ((limit_packets) && (d_packet > d_packet_lim))
         {
+          std::cout<<"Returning."<<limit_packets<<"\t"<<d_packet<<"\t"<<d_packet_lim<<std::endl;
           return;
         }
+
+
 
         //Make a PDU Metadata Dictionary to hold Packet Number and Length
         pmt::pmt_t d_pdu_meta = pmt::make_dict();
 
+
         size_t d_pdu_length = d_data.size();
-        pmt::pmt_t d_pdu_vector = pmt::init_f32vector(d_pdu_length,d_data); 
+        pmt::pmt_t d_pdu_vector = pmt::init_c32vector(d_pdu_length,d_data); 
+
 
         if (d_tag_output)
         {
@@ -130,7 +129,6 @@ namespace gr {
           d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Length"), pmt::from_long(d_data.size())); 
         }        
 
-        
 
         //Publish the PDU
         pmt::pmt_t msg = pmt::cons(d_pdu_meta, d_pdu_vector);
@@ -149,7 +147,6 @@ namespace gr {
       }
 
     }
-    
 
   } /* namespace messageutils */
 } /* namespace gr */

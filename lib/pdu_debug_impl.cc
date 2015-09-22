@@ -134,9 +134,20 @@ namespace gr {
               }
           }
           else if (d_type == sizeof(gr_complex))
-          {
-                std::cout<<"Complex"<<std::endl;
-                std::cout<<"Sorry. Didn't get around to handling complex yet."<<std::endl;
+          {      
+            const gr_complex* d = (gr_complex*) pmt::uniform_vector_elements(vector,offset);
+            std::vector<gr_complex> msg_unpacked;
+            msg_unpacked.assign(d,d+len);
+
+            std::cout<<"Complex"<<std::endl;
+            std::cout<<"Contents: "<<std::endl;
+
+            for (int jj=0;jj<len;jj++)
+            {
+              std::cout<<msg_unpacked[jj]<<" ";
+            }
+            std::cout<<std::endl;
+
           }
 
           else
