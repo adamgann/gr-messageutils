@@ -109,7 +109,6 @@ namespace gr {
         d_packet++;
         if ((limit_packets) && (d_packet > d_packet_lim))
         {
-          std::cout<<"Returning."<<limit_packets<<"\t"<<d_packet<<"\t"<<d_packet_lim<<std::endl;
           return;
         }
 

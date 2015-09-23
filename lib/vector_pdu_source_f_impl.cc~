@@ -114,8 +114,9 @@ namespace gr {
 
         d_packet++;
         if ((limit_packets) && (d_packet > d_packet_lim))
+        {
           return;
-
+        }
 
         //Make a PDU Metadata Dictionary to hold Packet Number and Length
         pmt::pmt_t d_pdu_meta = pmt::make_dict();

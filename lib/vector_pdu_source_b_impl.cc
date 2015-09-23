@@ -87,7 +87,8 @@ namespace gr {
       if (packet_lim == 0) {
         limit_packets = false;
       }
-      else {
+      else 
+      {
         limit_packets = true;
         d_packet_lim = packet_lim;
       }

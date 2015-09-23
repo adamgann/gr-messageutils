@@ -92,7 +92,7 @@ namespace gr {
         }
         else
         {
-          std::cout<<"Output chosen"<<std::endl;
+          dout<<"Output chosen"<<std::endl;
           size_t pdu_len = pmt::length(d_vect)*d_type;
           size_t offset(0);
           
@@ -100,7 +100,7 @@ namespace gr {
           std::vector<uint8_t> msg_data;
           msg_data.assign(d,d+pdu_len);
     
-          std::cout<<"Assigned "<<pdu_len<<" elements"<<std::endl;// starting with "<<msg_data[0]<<std::endl;
+          dout<<"Assigned "<<pdu_len<<" elements"<<std::endl;// starting with "<<msg_data[0]<<std::endl;
          
           // Pack the new vector into PDU and send
           pmt::pmt_t send_vect = pmt::init_u8vector(pdu_len,msg_data); 
