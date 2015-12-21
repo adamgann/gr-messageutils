@@ -40,6 +40,10 @@
         <name>Byte</name>
         <key>b</key>
     </option>
+    <option>
+        <name>Integer</name>
+        <key>i</key>
+    </option>
   </param>
 
   <param>

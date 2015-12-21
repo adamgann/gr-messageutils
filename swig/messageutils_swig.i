@@ -16,6 +16,7 @@
 #include "messageutils/mult_const_msg.h"
 #include "messageutils/vector_pdu_source_c.h"
 #include "messageutils/socket_pdu_repack.h"
+#include "messageutils/vector_pdu_source_i.h"
 %}
 
 %include "messageutils/pdu_debug.h"
@@ -37,3 +38,5 @@ GR_SWIG_BLOCK_MAGIC2(messageutils, vector_pdu_source_c);
 
 %include "messageutils/socket_pdu_repack.h"
 GR_SWIG_BLOCK_MAGIC2(messageutils, socket_pdu_repack);
+%include "messageutils/vector_pdu_source_i.h"
+GR_SWIG_BLOCK_MAGIC2(messageutils, vector_pdu_source_i);
