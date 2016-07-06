@@ -1,6 +1,7 @@
 /* -*- c++ -*- */
 
 #define MESSAGEUTILS_API
+#define BLOCKS_API
 
 %include "gnuradio.i"			// the common stuff
 
@@ -17,7 +18,10 @@
 #include "messageutils/vector_pdu_source_c.h"
 #include "messageutils/socket_pdu_repack.h"
 #include "messageutils/vector_pdu_source_i.h"
+#include "messageutils/pdu_splitter.h"
 %}
+
+%include "gnuradio/blocks/pdu.h"
 
 %include "messageutils/pdu_debug.h"
 GR_SWIG_BLOCK_MAGIC2(messageutils, pdu_debug);
@@ -40,3 +44,6 @@ GR_SWIG_BLOCK_MAGIC2(messageutils, vector_pdu_source_c);
 GR_SWIG_BLOCK_MAGIC2(messageutils, socket_pdu_repack);
 %include "messageutils/vector_pdu_source_i.h"
 GR_SWIG_BLOCK_MAGIC2(messageutils, vector_pdu_source_i);
+
+%include "messageutils/pdu_splitter.h"
+GR_SWIG_BLOCK_MAGIC2(messageutils, pdu_splitter);

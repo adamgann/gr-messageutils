@@ -24,5 +24,6 @@ install(FILES
     messageutils_mult_const_msg.xml
     messageutils_vector_pdu_source_c.xml
     messageutils_socket_pdu_repack.xml
-    messageutils_vector_pdu_source_i.xml DESTINATION share/gnuradio/grc/blocks
+    messageutils_vector_pdu_source_i.xml
+    messageutils_pdu_splitter.xml DESTINATION share/gnuradio/grc/blocks
 )

@@ -36,10 +36,11 @@ list(APPEND messageutils_sources
     mult_const_msg_impl.cc
     vector_pdu_source_c_impl.cc
     socket_pdu_repack_impl.cc
-    vector_pdu_source_i_impl.cc )
+    vector_pdu_source_i_impl.cc
+    pdu_splitter_impl.cc )
 
 add_library(gnuradio-messageutils SHARED ${messageutils_sources})
-target_link_libraries(gnuradio-messageutils ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})
+target_link_libraries(gnuradio-messageutils ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
 set_target_properties(gnuradio-messageutils PROPERTIES DEFINE_SYMBOL "gnuradio_messageutils_EXPORTS")
 
 ########################################################################

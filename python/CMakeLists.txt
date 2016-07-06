@@ -47,3 +47,4 @@ GR_ADD_TEST(qa_add_const_msg ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa
 GR_ADD_TEST(qa_vector_pdu_source_f ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_vector_pdu_source_f.py)
 GR_ADD_TEST(qa_vector_pdu_source_b ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_vector_pdu_source_b.py)
 GR_ADD_TEST(qa_vector_pdu_source_c ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_vector_pdu_source_c.py)
+GR_ADD_TEST(qa_pdu_splitter ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_pdu_splitter.py)

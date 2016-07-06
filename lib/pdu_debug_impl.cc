@@ -59,10 +59,12 @@ namespace gr {
       {
           pmt::pmt_t meta = pmt::car(pdu);
           pmt::pmt_t vector = pmt::cdr(pdu);
-          if (!pmt::eq(meta, pmt::PMT_NIL) )
+          //if (!pmt::eq(meta, pmt::PMT_NIL) )
+          if (1)
           {
 
               std::cout << "***********************************\n";
+              std::cout << "PDU Vector of size "<<pmt::length(vector)<<std::endl;
               std::cout << "**** Meta Data ****\n";
               pmt::print(meta);
         

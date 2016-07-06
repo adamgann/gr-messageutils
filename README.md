@@ -22,6 +22,11 @@ GNU Radio source code directory. From the terminal:
 
 #Blocks
 
+###PDU Splitter
+Split one PDU into several (for parallel processing and the like). Works like the Stream Mux block, but in reverse and with PDUs. 
+Specify the length of each PDU. The PDU received at the input will be split and output sequentially (first part at out0, second at out1, etc...).
+
+
 ###Socket PDU Repacker
 Floats are sent over UDP as bytes (4 bytes per float). The Socket PDU Repacker block repacks the received vector of bytes
 as a vector of floats fixing the data type and the vector length so they can be read by other blocks. 

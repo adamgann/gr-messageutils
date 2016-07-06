@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<block>
+  <name>PDU Splitter</name>
+  <key>messageutils_pdu_splitter</key>
+  <category>Message Utils</category>
+  <import>import messageutils</import>
+	<import>from gnuradio import blocks</import>
+  <make>messageutils.pdu_splitter($type.tv, $lengths, $debug)</make>
+
+  <param>
+    <name>Item Type</name>
+    <key>type</key>
+    <value>complex</value>
+    <type>enum</type>
+    <option>
+      <name>Byte</name>
+      <key>byte</key>
+      <opt>tv:blocks.byte_t</opt>
+    </option>
+    <option>
+      <name>Complex</name>
+      <key>complex</key>
+      <opt>tv:blocks.complex_t</opt>
+    </option>
+    <option>
+      <name>Float</name>
+      <key>float</key>
+      <opt>tv:blocks.float_t</opt>
+    </option>
+  </param>
+
+	<param>
+		<name>Lengths</name>
+		<key>lengths</key>
+		<value>1, 1</value>
+		<type>int_vector</type>
+	</param>
+
+	<param>
+		<name>Num Inputs</name>
+		<key>num_inputs</key>
+		<value>2</value>
+		<type>int</type>
+	</param>
+
+  <param>
+    <name>Debug</name>
+    <key>debug</key>
+    <value>False</value>
+    <type>bool</type>  
+      <option>
+	      <name>On</name>
+	      <key>True</key>
+      </option>
+      <option>
+	      <name>Off</name>
+	      <key>False</key>
+      </option>
+  </param>
+
+	<check>$num_inputs &gt; 0</check>
+	<check>$num_inputs == len($lengths)</check>
+
+	<sink>
+		<name>in</name>
+		<type>message</type>
+	</sink>
+
+	<source>
+		<name>out</name>
+		<type>message</type>	
+		<nports>$num_inputs</nports>
+    <optional>True</optional>
+	</source>
+
+
+</block>
