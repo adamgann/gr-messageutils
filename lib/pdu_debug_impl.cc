@@ -64,6 +64,7 @@ namespace gr {
           {
 
               std::cout << "***********************************\n";
+							std::cout << "Alias: " << alias() << std::endl;
               std::cout << "PDU Vector of size "<<pmt::length(vector)<<std::endl;
               std::cout << "**** Meta Data ****\n";
               pmt::print(meta);
@@ -80,6 +81,7 @@ namespace gr {
           pmt::pmt_t vector = pmt::cdr(pdu);
     
           std::cout << "***********************************\n";
+					std::cout << "Alias: " << alias() << std::endl;
           std::cout << "**** Meta Data ****\n";
           pmt::print(meta);
     
