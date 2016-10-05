@@ -43,7 +43,7 @@ namespace gr {
 
      public:
       vector_pdu_source_i_impl(const std::vector<uint32_t> &data, float period_ms, 
-                                bool tag_output, bool debug, unsigned int packet_lim);
+                                bool tag_output, bool debug, unsigned int packet_lim, float initial_delay);
       ~vector_pdu_source_i_impl();
       void set_period(float period_ms);
       void send_pdu(void);

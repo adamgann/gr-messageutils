@@ -4,7 +4,7 @@
   <key>messageutils_vector_pdu_xx</key>
   <category>Message Utils</category>
   <import>import messageutils</import>
-  <make>messageutils.vector_pdu_source_$(type)($vector, $period, $tag_output, $debug, $pkt_lim)</make>
+  <make>messageutils.vector_pdu_source_$(type)($vector, $period, $tag_output, $debug, $pkt_lim, $initial_delay)</make>
 
   <callback>set_period($period)</callback>
   <callback>set_vec($vector)</callback>
@@ -66,6 +66,14 @@
     <key>pkt_lim</key>
     <value>0</value>
     <type>int</type>
+    <hide>part</hide>
+  </param>
+
+  <param>
+    <name>Startup Delay (ms)</name>
+    <key>initial_delay</key>
+    <value>0</value>
+    <type>real</type>
     <hide>part</hide>
   </param>
 

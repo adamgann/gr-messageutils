@@ -30,15 +30,15 @@ namespace gr {
 
     vector_pdu_source_b::sptr
     vector_pdu_source_b::make(const std::vector<uint8_t> &data, float period_ms, 
-                                bool tag_output, bool debug, unsigned int packet_lim)
+                                bool tag_output, bool debug, unsigned int packet_lim, float initial_delay)
     {
       return gnuradio::get_initial_sptr
-        (new vector_pdu_source_b_impl(data, period_ms, tag_output, debug, packet_lim));
+        (new vector_pdu_source_b_impl(data, period_ms, tag_output, debug, packet_lim, initial_delay));
     }
 
 
     vector_pdu_source_b_impl::vector_pdu_source_b_impl(const std::vector<uint8_t> &data, float period_ms, 
-                                                      bool tag_output, bool debug, unsigned int packet_lim)
+                                                      bool tag_output, bool debug, unsigned int packet_lim, float initial_delay)
       : gr::block("vector_pdu_source_b",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
@@ -53,6 +53,7 @@ namespace gr {
       	(new boost::thread(boost::bind(&vector_pdu_source_b_impl::send_pdu, this)));
 
       d_finished = false;
+      boost::this_thread::sleep(boost::posix_time::milliseconds(initial_delay)); 
 	}
 
 
