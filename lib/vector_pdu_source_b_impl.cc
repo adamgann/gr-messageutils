@@ -42,9 +42,9 @@ namespace gr {
       : gr::block("vector_pdu_source_b",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
-         d_tag_output(tag_output), d_debug(debug), d_packet(0)
+         d_tag_output(tag_output), d_debug(debug), d_packet(0), d_period_ms(period_ms)
     {
-		  set_period(period_ms);
+			d_period_delay = initial_delay;
     	set_vec(data);
       set_limit(packet_lim);
 
@@ -53,7 +53,6 @@ namespace gr {
       	(new boost::thread(boost::bind(&vector_pdu_source_b_impl::send_pdu, this)));
 
       d_finished = false;
-      boost::this_thread::sleep(boost::posix_time::milliseconds(initial_delay)); 
 	}
 
 
@@ -109,7 +108,8 @@ namespace gr {
       
       while(!d_finished) 
       {
-        boost::this_thread::sleep(boost::posix_time::milliseconds(d_period_ms)); 
+        boost::this_thread::sleep(boost::posix_time::milliseconds(d_period_delay));
+				d_period_delay = d_period_ms; 
         if(d_finished) 
         {
           return;

@@ -34,6 +34,7 @@ namespace gr {
       int d_type;
       bool d_finished;
       float d_period_ms;
+			float d_period_delay;
       boost::shared_ptr<boost::thread> d_thread;
       
       long d_packet;
