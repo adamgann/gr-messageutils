@@ -49,20 +49,42 @@ namespace gr {
       set_limit(packet_lim);
 
     	message_port_register_out(pmt::mp("pdus"));
-    	d_thread = boost::shared_ptr<boost::thread>
-      	(new boost::thread(boost::bind(&vector_pdu_source_b_impl::send_pdu, this)));
+//    	d_thread = boost::shared_ptr<boost::thread>
+//      	(new boost::thread(boost::bind(&vector_pdu_source_b_impl::send_pdu, this)));
 
       d_finished = false;
+
 	}
 
 
 
     vector_pdu_source_b_impl::~vector_pdu_source_b_impl()
     {
+    }
+
+    bool
+    vector_pdu_source_b_impl::start()
+    {
+      d_finished = false;
+      d_thread = boost::shared_ptr<gr::thread::thread>
+        (new gr::thread::thread(boost::bind(&vector_pdu_source_b_impl::send_pdu, this)));
+
+      return block::start();
+    }
+
+    bool
+    vector_pdu_source_b_impl::stop()
+    {
+      // Shut down the thread
       d_finished = true;
       d_thread->interrupt();
       d_thread->join();
+
+      return block::stop();
     }
+
+
+
 
 
     void 

@@ -4,7 +4,7 @@
   <key>messageutils_pdu_debug</key>
   <category>Message Utils</category>
   <import>import messageutils</import>
-  <make>messageutils.pdu_debug($vec_type.size, $vec_type.ascii, $reverse_ascii, $meta_only, $display)</make>
+  <make>messageutils.pdu_debug($vec_type.size, $vec_type.ascii, $reverse_ascii, $print_hex, $meta_only, $display)</make>
 
 
     <param>
@@ -18,6 +18,7 @@
         <opt>ascii:True</opt>
 		    <opt>size:gr.sizeof_char</opt>
 		    <opt>hide_rev:</opt>
+				<opt>hide_format:all</opt>
 	    </option>
 	    <option>
 		    <name>Byte</name>
@@ -25,6 +26,7 @@
         <opt>ascii:False</opt>
 		    <opt>size:gr.sizeof_char</opt>
         <opt>hide_rev:all</opt>
+				<opt>hide_format:</opt>
 	    </option>
 	    <option>
 		    <name>Float</name>
@@ -32,6 +34,7 @@
         <opt>ascii:False</opt>
 		    <opt>size:gr.sizeof_float</opt>
         <opt>hide_rev:all</opt>
+				<opt>hide_format:all</opt>
 	    </option>
 	    <option>
 		    <name>Complex</name>
@@ -39,6 +42,7 @@
         <opt>ascii:False</opt>
 		    <opt>size:gr.sizeof_gr_complex</opt>
         <opt>hide_rev:all</opt>
+				<opt>hide_format:all</opt>
 	    </option>
     </param>
     
@@ -55,6 +59,23 @@
         <option>
           <name>Reversed</name>
           <key>True</key>
+        </option>
+    </param>
+
+
+    <param>
+      <name>Byte Format</name>
+      <key>print_hex</key>
+      <value>False</value>
+      <type>bool</type>
+      <hide>$vec_type.hide_format</hide>
+        <option>
+          <name>Hex</name>
+          <key>True</key>
+        </option>
+        <option>
+          <name>Dec</name>
+          <key>False</key>
         </option>
     </param>
 

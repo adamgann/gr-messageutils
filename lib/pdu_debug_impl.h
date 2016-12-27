@@ -28,20 +28,25 @@ namespace gr {
 
     class pdu_debug_impl : public pdu_debug
     {
-     private:
-      gr::thread::mutex d_mutex;
-      std::vector<pmt::pmt_t> d_messages;
-      bool d_meta_only;
-      bool d_display;
-      size_t d_type;
-      bool d_print_ascii;
-      bool d_reverse_ascii;
+			private:
+				size_t 												d_type;
+				bool 													d_print_ascii;
+				bool 													d_reverse_ascii;
+				bool 													d_print_hex;
+				bool 													d_meta_only;
+    		bool 													d_display;
+
+
+
+      	gr::thread::mutex 						d_mutex;
+      	std::vector<pmt::pmt_t> 			d_messages;
+
 
      public:
-      pdu_debug_impl(size_t type, bool print_ascii, bool reverse_ascii, bool meta_only, bool display);
+      pdu_debug_impl(size_t type, bool print_ascii, bool reverse_ascii, bool print_hex, bool meta_only, bool display);
       ~pdu_debug_impl();
 
-
+			void print_one_byte(uint8_t d);
       void print_pdu(pmt::pmt_t pdu);
       uint8_t reverse(uint8_t x);
       int num_messages();

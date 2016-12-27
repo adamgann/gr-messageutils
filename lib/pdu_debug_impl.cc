@@ -31,11 +31,30 @@ namespace gr {
   namespace messageutils {
 
     pdu_debug::sptr
-    pdu_debug::make(size_t type,  bool print_ascii, bool reverse_ascii, bool meta_only, bool display)
+    pdu_debug::make(size_t type,  bool print_ascii, bool reverse_ascii, bool print_hex, bool meta_only, bool display)
     {
       return gnuradio::get_initial_sptr
-        (new pdu_debug_impl(type, print_ascii, reverse_ascii, meta_only, display));
+        (new pdu_debug_impl(type, print_ascii, reverse_ascii, print_hex, meta_only, display));
     }
+
+    pdu_debug_impl::pdu_debug_impl(size_t type,  bool print_ascii, bool reverse_ascii, bool print_hex, bool meta_only, bool display)
+      : gr::block("pdu_debug",
+              gr::io_signature::make(0,0,0),
+              gr::io_signature::make(0,0,0)),
+        d_type(type), d_print_ascii(print_ascii),d_reverse_ascii(reverse_ascii), d_print_hex(print_hex), d_meta_only(meta_only), d_display(display) 
+
+    {
+     
+      message_port_register_in(pmt::mp("pdus"));
+      set_msg_handler(pmt::mp("pdus"), boost::bind(&pdu_debug_impl::print_pdu, this, _1));
+
+    }
+
+
+    pdu_debug_impl::~pdu_debug_impl()
+    {
+    }
+
 
     uint8_t pdu_debug_impl::reverse(uint8_t b)
     {
@@ -44,6 +63,35 @@ namespace gr {
        b = (b & 0xAA) >> 1 | (b & 0x55) << 1;
        return b;
     }
+
+		void
+		pdu_debug_impl::print_one_byte(uint8_t d)
+		{
+			
+		 if (d_print_ascii)
+			{
+			  if (d_reverse_ascii)
+			  {
+			      printf("%c", reverse(d));
+			  }
+			  else
+			  {
+			      printf("%c", d); 
+			  }
+			}
+			else
+			{
+				if (d_print_hex)
+				{
+			   	printf("%02x ",d);
+				}
+				else
+				{
+					printf("%02d ",d);
+				}
+			}
+
+		}
 
 
     void
@@ -102,23 +150,7 @@ namespace gr {
               {
                 for(size_t j=i; j<std::min(i+16,len); j++)
                 {
-                  if (d_print_ascii)
-                  {
-                    if (d_reverse_ascii)
-                    {
-                        printf("%c", reverse(d[j]));
-                    }
-                    else
-                    {
-                        printf("%c", (d[j])); 
-                    }
-                  }
-                  else
-                  {
-                     printf("%02x ",d[j] );
-                  }
-
-                    
+									print_one_byte(d[j]);
                 }
               }
           }
@@ -190,24 +222,6 @@ namespace gr {
 
 
 
-    pdu_debug_impl::pdu_debug_impl(size_t type,  bool print_ascii, bool reverse_ascii, bool meta_only, bool display)
-      : gr::block("pdu_debug",
-              gr::io_signature::make(0,0,0),
-              gr::io_signature::make(0,0,0)),
-        d_type(type), d_print_ascii(print_ascii), d_meta_only(meta_only), d_display(display), d_reverse_ascii(reverse_ascii)
-
-    {
-    
-     
-      message_port_register_in(pmt::mp("pdus"));
-      set_msg_handler(pmt::mp("pdus"), boost::bind(&pdu_debug_impl::print_pdu, this, _1));
-
-    }
-
-
-    pdu_debug_impl::~pdu_debug_impl()
-    {
-    }
 
 
   } /* namespace messageutils */

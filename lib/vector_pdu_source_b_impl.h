@@ -50,6 +50,10 @@ namespace gr {
       void send_pdu(void);
       void set_vec(const std::vector<uint8_t> &data);
       void set_limit(unsigned int packet_lim);
+
+			bool start();
+			bool stop();
+
     };
 
   } // namespace messageutils
