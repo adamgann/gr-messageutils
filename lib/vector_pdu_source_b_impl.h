@@ -28,19 +28,19 @@ namespace gr {
 
     class vector_pdu_source_b_impl : public vector_pdu_source_b
     {
-     private:
-      std::vector<uint8_t> d_data;    
-      bool d_debug;
-      int d_type;
-      bool d_finished;
-      float d_period_ms;
-			float d_period_delay;
-      boost::shared_ptr<boost::thread> d_thread;
-      
-      long d_packet;
-      bool d_tag_output;
-      unsigned int d_packet_lim;
-      bool limit_packets;
+     	private:
+		    std::vector<uint8_t> d_data;   
+		    float d_period_ms; 
+		    bool d_tag_output;
+		    bool d_debug;
+        unsigned int d_packet_lim;
+        float d_period_delay;
+        
+        bool d_finished;
+		    int d_offset;
+				long d_packet;
+				bool limit_packets;
+				boost::shared_ptr<boost::thread> d_thread;
 
      public:
       vector_pdu_source_b_impl(const std::vector<uint8_t> &data, float period_ms, 
@@ -50,6 +50,9 @@ namespace gr {
       void send_pdu(void);
       void set_vec(const std::vector<uint8_t> &data);
       void set_limit(unsigned int packet_lim);
+      int work(int noutput_items,
+        gr_vector_const_void_star &input_items,
+        gr_vector_void_star &output_items);
 
 			bool start();
 			bool stop();

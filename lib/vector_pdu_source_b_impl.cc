@@ -25,6 +25,8 @@
 #include <gnuradio/io_signature.h>
 #include "vector_pdu_source_b_impl.h"
 
+#define dout if (d_debug) std::cout
+
 namespace gr {
   namespace messageutils {
 
@@ -36,27 +38,20 @@ namespace gr {
         (new vector_pdu_source_b_impl(data, period_ms, tag_output, debug, packet_lim, initial_delay));
     }
 
-
     vector_pdu_source_b_impl::vector_pdu_source_b_impl(const std::vector<uint8_t> &data, float period_ms, 
                                                       bool tag_output, bool debug, unsigned int packet_lim, float initial_delay)
-      : gr::block("vector_pdu_source_b",
+      : gr::sync_block("vector_pdu_source_b",
               gr::io_signature::make(0,0,0),
-              gr::io_signature::make(0,0,0)),
-         d_tag_output(tag_output), d_debug(debug), d_packet(0), d_period_ms(period_ms)
+              gr::io_signature::make(1,1,sizeof(char))),
+        d_data(data), d_period_ms(period_ms), d_tag_output(tag_output), d_debug(debug), d_packet_lim(packet_lim), d_period_delay(initial_delay)
     {
-			d_period_delay = initial_delay;
-    	set_vec(data);
-      set_limit(packet_lim);
-
+    	d_offset = 0;
+    	d_packet = 0;
+    	limit_packets = (packet_lim) ? true : false;
+    	dout<<"Limit Packets? "<<limit_packets<<std::endl;
+    	
     	message_port_register_out(pmt::mp("pdus"));
-//    	d_thread = boost::shared_ptr<boost::thread>
-//      	(new boost::thread(boost::bind(&vector_pdu_source_b_impl::send_pdu, this)));
-
-      d_finished = false;
-
-	}
-
-
+		}
 
     vector_pdu_source_b_impl::~vector_pdu_source_b_impl()
     {
@@ -122,6 +117,23 @@ namespace gr {
       }
 
     }
+    
+    int
+    vector_pdu_source_b_impl::work(int noutput_items,
+        gr_vector_const_void_star &input_items,
+        gr_vector_void_star &output_items)
+    {
+
+			if ((limit_packets) && (d_packet > d_packet_lim))
+			{
+				dout<<d_packet<<"\t"<<d_packet_lim<<"\t"<<limit_packets<<std::endl;
+				dout<<"Finished output. Exiting"<<std::endl;
+				dout<<"Sent shutdown msg"<<std::endl;
+				return -1;
+			}
+			return 0;
+			
+    }
 
 
     void 
@@ -140,7 +152,7 @@ namespace gr {
         d_packet++;
         if ((limit_packets) && (d_packet > d_packet_lim))
         {
-          //Do nothing
+          // Do nothing
         }
         else
         {
@@ -157,8 +169,12 @@ namespace gr {
           {
             d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Packet"), pmt::from_long(d_packet));
             d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Length"), pmt::from_long(d_data.size())); 
-          }       
-
+          }    
+          if (d_packet == d_packet_lim)
+          {
+          	d_pdu_meta = dict_add(d_pdu_meta, pmt::intern("Last"), pmt::PMT_T);
+          }
+   
           //Publish the PDU
           pmt::pmt_t msg = pmt::cons(d_pdu_meta, d_pdu_vector);
           message_port_pub(pmt::mp("pdus"),msg);

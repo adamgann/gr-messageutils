@@ -23,7 +23,7 @@
 #define INCLUDED_MESSAGEUTILS_VECTOR_PDU_SOURCE_B_H
 
 #include <messageutils/api.h>
-#include <gnuradio/block.h>
+#include <gnuradio/sync_block.h>
 
 namespace gr {
   namespace messageutils {
@@ -33,7 +33,7 @@ namespace gr {
      * \ingroup messageutils
      *
      */
-    class MESSAGEUTILS_API vector_pdu_source_b : virtual public gr::block
+    class MESSAGEUTILS_API vector_pdu_source_b : virtual public gr::sync_block
     {
      public:
       typedef boost::shared_ptr<vector_pdu_source_b> sptr;

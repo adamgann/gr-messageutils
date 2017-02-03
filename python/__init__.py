@@ -45,6 +45,8 @@ if _RTLD_GLOBAL != 0:
 from messageutils_swig import *
 
 # import any pure python here
+from vec_source_pdu import vec_source_pdu
+
 
 #
 

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<block>
+  <name>Vector PDU Source</name>
+  <key>messageutils_vec_source_pdu</key>
+  <category>[Utils]</category>
+  <import>import messageutils</import>
+  <make>messageutils.vec_source_pdu($type.item_size, $vector, $period_ms, $tag_output, $debug, $pkt_limit, $initial_delay)</make>
+
+  <param>
+		<name>Vector</name>
+		<key>vector</key>
+		<value>(0, 0, 0)</value>
+		<type>$type.vec_type</type>
+  </param>
+
+  <param>
+    <name>Period (ms)</name>
+    <key>period_ms</key>
+    <value>1000</value>
+    <type>real</type>
+  </param>
+
+  <param>
+    <name>IO Type</name>
+    <key>type</key>
+    <value>f</value>
+    <type>enum</type>
+    <option>
+      <name>Complex</name>
+      <key>c</key>
+      <opt>item_size:8</opt>
+      <opt>vec_type:complex_vector</opt>
+    </option>
+    <option>
+        <name>Float</name>
+        <key>f</key>
+        <opt>item_size:4</opt>
+        <opt>vec_type:real_vector</opt>
+    </option>
+    <option>
+        <name>Byte</name>
+        <key>b</key>
+        <opt>item_size:1</opt>
+        <opt>vec_type:int_vector</opt>
+    </option>
+  </param>
+  
+
+  <param>
+    <name>Add Metadata</name>
+    <key>tag_output</key>
+    <value>False</value>
+    <type>bool</type>  
+		    <option>
+			    <name>Yes</name>
+			    <key>True</key>
+		    </option>
+		    <option>
+			    <name>No</name>
+			    <key>False</key>
+		    </option>
+    </param>
+
+  <param>
+    <name>Packet Limit</name>
+    <key>pkt_limit</key>
+    <value>0</value>
+    <type>int</type>
+    <hide>part</hide>
+  </param>
+
+  <param>
+    <name>Startup Delay (ms)</name>
+    <key>initial_delay</key>
+    <value>0</value>
+    <type>real</type>
+    <hide>part</hide>
+  </param>
+
+
+  <param>
+    <name>Debug</name>
+    <key>debug</key>
+    <value>False</value>
+    <type>bool</type>  
+		    <option>
+			    <name>On</name>
+			    <key>True</key>
+		    </option>
+		    <option>
+			    <name>Off</name>
+			    <key>False</key>
+		    </option>
+    </param>
+    
+
+  <source>
+    <name>out</name>
+    <type>message</type>
+		<optional>True</optional>
+  </source>
+  
+</block>
