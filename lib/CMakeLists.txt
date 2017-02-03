@@ -25,6 +25,9 @@
 ########################################################################
 include(GrPlatform) #define LIB_SUFFIX
 
+include(GrMiscUtils)
+GR_EXPAND_X_CC_H_IMPL(messageutils vector_source_pdu_X 			b f c)
+
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 list(APPEND messageutils_sources
@@ -37,9 +40,11 @@ list(APPEND messageutils_sources
     vector_pdu_source_c_impl.cc
     socket_pdu_repack_impl.cc
     vector_pdu_source_i_impl.cc
-    pdu_splitter_impl.cc )
+    pdu_splitter_impl.cc
+    ${generated_sources} )
 
 add_library(gnuradio-messageutils SHARED ${messageutils_sources})
+add_dependencies(gnuradio-messageutils messageutils_generated_includes messageutils_generated_swigs)
 target_link_libraries(gnuradio-messageutils ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
 set_target_properties(gnuradio-messageutils PROPERTIES DEFINE_SYMBOL "gnuradio_messageutils_EXPORTS")
 

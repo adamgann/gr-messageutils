@@ -80,6 +80,10 @@ set(GR_LIBEXEC_DIR      libexec)
 set(GR_PKG_LIBEXEC_DIR  ${GR_LIBEXEC_DIR}/${CMAKE_PROJECT_NAME})
 set(GRC_BLOCKS_DIR      ${GR_PKG_DATA_DIR}/grc/blocks)
 
+# Give the EXTRACT macro the correct path to build_utils.py
+# Setting this path shouldn't hurt anything, I think. 
+set(GR_RUNTIME_PYTHONPATH ${CMAKE_SOURCE_DIR}/python)
+
 ########################################################################
 # Find gnuradio build dependencies
 ########################################################################

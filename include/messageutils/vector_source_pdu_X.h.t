@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /* 
- * Copyright 2014 <+YOU OR YOUR COMPANY+>.
+ * Copyright 2017 Adam M. Gannon
  * 
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
-#ifndef INCLUDED_MESSAGEUTILS_MULT_CONST_MSG_H
-#define INCLUDED_MESSAGEUTILS_MULT_CONST_MSG_H
+#ifndef @GUARD_NAME@
+#define @GUARD_NAME@
 
 #include <messageutils/api.h>
 #include <gnuradio/sync_block.h>
@@ -28,29 +27,17 @@
 namespace gr {
   namespace messageutils {
 
-    /*!
-     * \brief <+description of block+>
-     * \ingroup messageutils
-     *
-     */
-    class MESSAGEUTILS_API mult_const_msg : virtual public gr::sync_block
+
+    class MESSAGEUTILS_API @NAME@ : virtual public gr::sync_block
     {
      public:
-      typedef boost::shared_ptr<mult_const_msg> sptr;
+      typedef boost::shared_ptr<@NAME@> sptr;
 
-      /*!
-       * \brief Return a shared_ptr to a new instance of messageutils::mult_const_msg.
-       *
-       * To avoid accidental use of raw pointers, messageutils::mult_const_msg's
-       * constructor is in a private implementation
-       * class. messageutils::mult_const_msg::make is the public interface for
-       * creating new instances.
-       */
-      static sptr make(float const, bool debug);
+      static sptr make(const std::vector<@I_TYPE@> &data, float period_ms, 
+                        bool tag_output, bool debug, unsigned int packet_lim = 0, float initial_delay = 0);
     };
 
   } // namespace messageutils
 } // namespace gr
 
-#endif /* INCLUDED_MESSAGEUTILS_MULT_CONST_MSG_H */
-
+#endif /* @GUARD_NAME@ */

@@ -36,7 +36,11 @@ class vec_source_pdu(gr.hier_block2):
 			self.message_port_register_hier_out("out")
 
 			if (item_size == gr.sizeof_char):
-				self.vec_source = messageutils.vector_pdu_source_b(vector, period_ms, tag_output, debug, pkt_limit, initial_delay)
+				self.vec_source = messageutils.vector_source_pdu_b(vector, period_ms, tag_output, debug, pkt_limit, initial_delay)
+			elif (item_size == gr.sizeof_float):
+				self.vec_source = messageutils.vector_source_pdu_f(vector, period_ms, tag_output, debug, pkt_limit, initial_delay)
+			elif (item_size == gr.sizeof_gr_complex):
+				self.vec_source = messageutils.vector_source_pdu_c(vector, period_ms, tag_output, debug, pkt_limit, initial_delay)
 			else:
 				print "Invalid Data Type."
 
