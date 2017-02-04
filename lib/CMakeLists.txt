@@ -34,12 +34,8 @@ list(APPEND messageutils_sources
     pdu_debug_impl.cc
     message_thresh_switch_impl.cc
     add_const_msg_impl.cc
-    vector_pdu_source_f_impl.cc
-    vector_pdu_source_b_impl.cc
     mult_const_msg_impl.cc
-    vector_pdu_source_c_impl.cc
     socket_pdu_repack_impl.cc
-    vector_pdu_source_i_impl.cc
     pdu_splitter_impl.cc
     ${generated_sources} )
 

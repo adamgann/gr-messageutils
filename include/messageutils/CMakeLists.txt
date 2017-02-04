@@ -29,18 +29,13 @@ GR_EXPAND_X_H(messageutils vector_source_pdu_X 		b f c)
 add_custom_target(messageutils_generated_includes DEPENDS
 	${generated_includes}
 )
-
 install(FILES
     api.h
     pdu_debug.h
     message_thresh_switch.h
     add_const_msg.h
-    vector_pdu_source_f.h
-    vector_pdu_source_b.h
     mult_const_msg.h
-    vector_pdu_source_c.h
     socket_pdu_repack.h
-    vector_pdu_source_i.h
     pdu_splitter.h 
     ${generated_includes} DESTINATION include/messageutils
 )
