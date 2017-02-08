@@ -19,6 +19,7 @@
 #include "messageutils/vector_source_pdu_b.h"
 #include "messageutils/vector_source_pdu_f.h"
 #include "messageutils/vector_source_pdu_c.h"
+#include "messageutils/pdu_to_file.h"
 %}
 
 %include "gnuradio/blocks/pdu.h"
@@ -49,3 +50,5 @@ GR_SWIG_BLOCK_MAGIC2(messageutils, socket_pdu_repack);
 
 %include "messageutils/pdu_splitter.h"
 GR_SWIG_BLOCK_MAGIC2(messageutils, pdu_splitter);
+%include "messageutils/pdu_to_file.h"
+GR_SWIG_BLOCK_MAGIC2(messageutils, pdu_to_file);

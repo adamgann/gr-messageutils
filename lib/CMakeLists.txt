@@ -37,7 +37,8 @@ list(APPEND messageutils_sources
     mult_const_msg_impl.cc
     socket_pdu_repack_impl.cc
     pdu_splitter_impl.cc
-    ${generated_sources} )
+    ${generated_sources}
+    pdu_to_file_impl.cc )
 
 add_library(gnuradio-messageutils SHARED ${messageutils_sources})
 add_dependencies(gnuradio-messageutils messageutils_generated_includes messageutils_generated_swigs)

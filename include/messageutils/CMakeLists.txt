@@ -37,5 +37,6 @@ install(FILES
     mult_const_msg.h
     socket_pdu_repack.h
     pdu_splitter.h 
-    ${generated_includes} DESTINATION include/messageutils
+    ${generated_includes}
+    pdu_to_file.h DESTINATION include/messageutils
 )
