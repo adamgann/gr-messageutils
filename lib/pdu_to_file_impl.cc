@@ -33,18 +33,17 @@ namespace gr {
   namespace messageutils {
 
     pdu_to_file::sptr
-    pdu_to_file::make(size_t itemsize, const char *filename, bool append)
+    pdu_to_file::make(const char *filename, bool append)
     {
       return gnuradio::get_initial_sptr
-        (new pdu_to_file_impl(itemsize, filename, append));
+        (new pdu_to_file_impl(filename, append));
     }
 
-    pdu_to_file_impl::pdu_to_file_impl(size_t itemsize, const char *filename, bool append)
+    pdu_to_file_impl::pdu_to_file_impl(const char *filename, bool append)
       : gr::block("pdu_to_file",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
-          file_sink_base(filename, true, append),
-          d_itemsize(itemsize)
+          file_sink_base(filename, true, append)
     {
     
       message_port_register_in(pmt::mp("in"));
@@ -68,8 +67,11 @@ namespace gr {
       }
       pmt::pmt_t data_meta = pmt::car(msg);
       pmt::pmt_t data_blob = pmt::cdr(msg);
-      std::vector<float> in_buffer = pmt::f32vector_elements(data_blob); 
-      dout<<"Got blob of size "<<in_buffer.size()<<std::endl;
+
+      size_t offset(0);
+      size_t len = pmt::blob_length(data_blob);
+      const uint8_t *d = (const uint8_t*) pmt::uniform_vector_elements(data_blob,offset);
+      
       
       do_update();                    // update d_fp is reqd
       if(!d_fp) 
@@ -78,21 +80,15 @@ namespace gr {
       	return;
       }
       
-      int count = fwrite(&in_buffer[0], d_itemsize, in_buffer.size(), d_fp);
+      int count = fwrite(d, 1, len, d_fp);
       dout<<"Count "<<count<<std::endl;
       
       if (ferror(d_fp))
       {
       	throw std::runtime_error("Uh oh.");
       }
-      
-      
       fflush(d_fp);
-      
-      
- 
-      
-      
+
       
     }
 

@@ -4,44 +4,13 @@
   <key>messageutils_pdu_to_file</key>
   <category>[Utils]</category>
   <import>import messageutils</import>
-  <make>messageutils.pdu_to_file($type.size, $file, $append)</make>
+  <make>messageutils.pdu_to_file($file, $append)</make>
  
  	<param>
 		<name>File</name>
 		<key>file</key>
 		<value></value>
 		<type>file_save</type>
-	</param>
-	
-	<param>
-		<name>Input Type</name>
-		<key>type</key>
-		<type>enum</type>
-		<option>
-			<name>Complex</name>
-			<key>complex</key>
-			<opt>size:gr.sizeof_gr_complex</opt>
-		</option>
-		<option>
-			<name>Float</name>
-			<key>float</key>
-			<opt>size:gr.sizeof_float</opt>
-		</option>
-		<option>
-			<name>Int</name>
-			<key>int</key>
-			<opt>size:gr.sizeof_int</opt>
-		</option>
-		<option>
-			<name>Short</name>
-			<key>short</key>
-			<opt>size:gr.sizeof_short</opt>
-		</option>
-		<option>
-			<name>Byte</name>
-			<key>byte</key>
-			<opt>size:gr.sizeof_char</opt>
-		</option>
 	</param>
 	
 	<param>

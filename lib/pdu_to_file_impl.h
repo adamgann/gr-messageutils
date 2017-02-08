@@ -32,7 +32,7 @@ namespace gr {
      	size_t d_itemsize;
 
      public:
-      pdu_to_file_impl(size_t itemsize, const char *filename, bool append);
+      pdu_to_file_impl(const char *filename, bool append);
       ~pdu_to_file_impl();
 
 			void handle_msg(pmt::pmt_t msg);
