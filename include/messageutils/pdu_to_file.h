@@ -40,7 +40,7 @@ namespace gr {
      public:
       typedef boost::shared_ptr<pdu_to_file> sptr;
 
-      static sptr make(const char *filename, bool append);
+      static sptr make(const char *filename, bool append, bool debug);
     };
 
   } // namespace messageutils

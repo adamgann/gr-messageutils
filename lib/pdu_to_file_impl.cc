@@ -27,23 +27,23 @@
 #include <stdexcept>
 
 
-#define dout if (1) std::cout
+#define dout if (d_debug) std::cout
 
 namespace gr {
   namespace messageutils {
 
     pdu_to_file::sptr
-    pdu_to_file::make(const char *filename, bool append)
+    pdu_to_file::make(const char *filename, bool append, bool debug)
     {
       return gnuradio::get_initial_sptr
-        (new pdu_to_file_impl(filename, append));
+        (new pdu_to_file_impl(filename, append, debug));
     }
 
-    pdu_to_file_impl::pdu_to_file_impl(const char *filename, bool append)
+    pdu_to_file_impl::pdu_to_file_impl(const char *filename, bool append, bool debug)
       : gr::block("pdu_to_file",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(0,0,0)),
-          file_sink_base(filename, true, append)
+          file_sink_base(filename, true, append), d_debug(debug)
     {
     
       message_port_register_in(pmt::mp("in"));

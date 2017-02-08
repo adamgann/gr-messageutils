@@ -4,7 +4,7 @@
   <key>messageutils_pdu_to_file</key>
   <category>[Utils]</category>
   <import>import messageutils</import>
-  <make>messageutils.pdu_to_file($file, $append)</make>
+  <make>messageutils.pdu_to_file($file, $append, $debug)</make>
  
  	<param>
 		<name>File</name>
@@ -27,6 +27,23 @@
 			<key>False</key>
 		</option>
 	</param>
+	
+	
+  <param>
+    <name>Debug</name>
+    <key>debug</key>
+    <value>False</value>
+    <type>bool</type>  
+		    <option>
+			    <name>On</name>
+			    <key>True</key>
+		    </option>
+		    <option>
+			    <name>Off</name>
+			    <key>False</key>
+		    </option>
+    </param>
+    
 	
 	<sink>
 		<name>in</name>

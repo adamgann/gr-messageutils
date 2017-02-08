@@ -30,9 +30,10 @@ namespace gr {
     {
      private:
      	size_t d_itemsize;
+     	bool	 d_debug;
 
      public:
-      pdu_to_file_impl(const char *filename, bool append);
+      pdu_to_file_impl(const char *filename, bool append, bool debug);
       ~pdu_to_file_impl();
 
 			void handle_msg(pmt::pmt_t msg);
