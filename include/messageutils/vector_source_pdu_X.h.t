@@ -32,9 +32,10 @@ namespace gr {
     {
      public:
       typedef boost::shared_ptr<@NAME@> sptr;
-
       static sptr make(const std::vector<@I_TYPE@> &data, float period_ms, 
                         bool tag_output, bool debug, unsigned int packet_lim = 0, float initial_delay = 0);
+      virtual void set_period(float period_ms) = 0;
+      virtual void set_vec(const std::vector<@O_TYPE@> &data) = 0;
     };
 
   } // namespace messageutils

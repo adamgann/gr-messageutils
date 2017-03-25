@@ -48,4 +48,11 @@ class vec_source_pdu(gr.hier_block2):
 
 			# Define blocks and connect them
 			self.msg_connect((self.vec_source, 'pdus'), (self, 'out'))    
-			self.connect((self.vec_source, 0), (self.null_sink, 0))    
+			self.connect((self.vec_source, 0), (self.null_sink, 0))   
+			
+		def set_period(self,period_ms):
+			self.vec_source.set_period(period_ms)
+			
+		def set_vec(self,vector):
+			self.vec_source.set_vec(vector)
+			 

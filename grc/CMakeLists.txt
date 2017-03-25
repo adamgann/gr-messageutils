@@ -20,7 +20,6 @@ install(FILES
     messageutils_pdu_debug.xml
     messageutils_message_thresh_switch.xml
     messageutils_add_const_msg.xml
-    messageutils_vector_pdu_xx.xml
     messageutils_mult_const_msg.xml
     messageutils_socket_pdu_repack.xml
     messageutils_pdu_splitter.xml

@@ -6,6 +6,9 @@
   <import>import messageutils</import>
   <make>messageutils.vec_source_pdu($type.item_size, $vector, $period_ms, $tag_output, $debug, $pkt_limit, $initial_delay)</make>
 
+  <callback>set_period($period_ms)</callback>
+  <callback>set_vec($vector)</callback>
+  
   <param>
 		<name>Vector</name>
 		<key>vector</key>
