@@ -26,7 +26,7 @@
   <param>
     <name>IO Type</name>
     <key>type</key>
-    <value>f</value>
+    <value>b</value>
     <type>enum</type>
     <option>
       <name>Complex</name>
